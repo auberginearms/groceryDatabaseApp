@@ -1,29 +1,23 @@
 import { ReactElement, useState } from "react";
 import { Credentials } from "./types";
 import { Button, Form } from "react-bootstrap";
-import { getCredentials, validLoginDetails } from "@/server/getCredentials";
+import { credentialsAreValid } from "@/server/getCredentials";
 
-async function logCredentials(): Promise<void> {
-  console.log("a potato");
-  const credentials = await getCredentials();
-  console.log(credentials);
-}
+// function credentialsAreValid(
+//   validLoginDetails: Credentials[],
+//   inputUsername: string,
+//   inputPassword: string
+// ) {
+//   const elementWithMatchingUsername = validLoginDetails.find((loginDetails) => {
+//     return loginDetails.username === inputUsername;
+//   });
 
-function credentialsAreValid(
-  validLoginDetails: Credentials[],
-  inputUsername: string,
-  inputPassword: string
-) {
-  const elementWithMatchingUsername = validLoginDetails.find((loginDetails) => {
-    return loginDetails.username === inputUsername;
-  });
+//   if (elementWithMatchingUsername === undefined) {
+//     return;
+//   }
 
-  if (elementWithMatchingUsername === undefined) {
-    return;
-  }
-
-  return elementWithMatchingUsername.password === inputPassword;
-}
+//   return elementWithMatchingUsername.password === inputPassword;
+// }
 
 export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
@@ -95,8 +89,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
       </Form>
       <Button
         onClick={async () => {
-          await logCredentials();
-          if (credentialsAreValid(await getCredentials(), username, password)) {
+          if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
           }
         }}
