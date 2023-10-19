@@ -28,3 +28,8 @@ model User {
   posts         Post[]
   @@map(name: "users")
 }
+
+model LoginDetail {
+  username            String       @id 
+  password          String
+}
