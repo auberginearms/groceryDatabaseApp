@@ -1,9 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Login } from "./Login";
 import { styled } from "styled-components";
-import { Credentials } from "./types";
 import { Welcome } from "./Welcome";
-import { Button } from "react-bootstrap";
 import { PageDisplay } from "./utils";
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
@@ -30,6 +28,11 @@ function App(): ReactElement {
 export default App;
 
 const AppStyling = styled.div`
-  display: "flex";
-  flex-direction: ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  background: #090043;
+  width: auto;
+  height: 2000px;
 `;

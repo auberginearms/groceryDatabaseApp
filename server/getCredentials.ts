@@ -1,7 +1,8 @@
 "use server";
 
 import { Credentials } from "@/app/types";
- const validLoginDetails: Credentials[] = [
+
+const validLoginDetails: Credentials[] = [
   {
     username: "FakeUser1",
     password: "Password1",
@@ -12,6 +13,14 @@ import { Credentials } from "@/app/types";
   },
 ];
 
-export async function getCredentials(): Promise<Credentials[]> {
-  return validLoginDetails;
+export async function credentialsAreValid(
+  inputUsername: string,
+  inputPassword: string
+) {
+  return validLoginDetails.some((loginDetails, index) => {
+    return (
+      loginDetails.username === inputUsername &&
+      validLoginDetails[index].password === inputPassword
+    );
+  });
 }
