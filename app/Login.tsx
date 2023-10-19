@@ -35,7 +35,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         }}
       >
         <div style={{ fontSize: "20px", color: "#FFFFFF" }}>
-          Let's find some deals
+          Let&apos;s find some deals
         </div>
         <div style={{ height: "50px" }}></div>
 
