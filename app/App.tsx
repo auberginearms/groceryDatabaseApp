@@ -29,10 +29,7 @@ export default App;
 
 const AppStyling = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  background: #090043;
-  width: auto;
-  height: 2000px;
+  flex: 1;
+  height: 100%;
+  justify-content: centre;
 `;

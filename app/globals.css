@@ -25,3 +25,11 @@ body {
     )
     rgb(var(--background-start-rgb));
 } */
+
+body {
+  margin: 0;
+  display: flex;
+  background: #090043;
+  min-height: 100vh;
+  align-items: center;
+}

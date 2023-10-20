@@ -19,6 +19,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         flexGrow: 1,
         justifyContent: "center",
         margin: "auto",
+        color: "#FFF",
       }}
     >
       <Form
@@ -34,9 +35,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
           margin: "auto",
         }}
       >
-        <div style={{ fontSize: "20px", color: "#FFFFFF" }}>
-          Let&apos;s find some deals
-        </div>
+        <div style={{ fontSize: "20px" }}>Let&apos;s find some deals</div>
         <div style={{ height: "50px" }}></div>
 
         <Form.Group
@@ -46,13 +45,18 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
             display: "flex",
             flexDirection: "column",
             flexGrow: 4,
-            color: "#FFFFFF",
             fontSize: "12px",
           }}
         >
           <Form.Label>Username</Form.Label>
+          <div style={{ height: "10px" }}></div>
           <Form.Control
-            style={{ backgroundColor: "#B5A8A8" }}
+            style={{
+              width: "160px",
+              height: "32px",
+              flexShrink: "0",
+              background: "#B5A8A8",
+            }}
             type="text"
             placeholder="enter your username"
             value={username}
@@ -63,7 +67,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
           />
         </Form.Group>
 
-        <hr />
+        <div style={{ height: "20px" }}></div>
 
         <Form.Group
           className="mb-3"
@@ -71,26 +75,33 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
           style={{
             display: "flex",
             flexDirection: "column",
-            color: "#FFFFFF",
+
             fontSize: "12px",
           }}
         >
           <Form.Label>Password</Form.Label>
+          <div style={{ height: "10px" }}></div>
+
           <Form.Control
+            style={{
+              width: "160px",
+              height: "32px",
+              flexShrink: "0",
+              background: "#B5A8A8",
+            }}
             type="password"
             placeholder="enter your password"
             value={password}
-            style={{ backgroundColor: "#B5A8A8" }}
             onChange={(e) => {
               const newPassword = e.target.value;
               setPassword(newPassword);
             }}
           />
+          <div style={{ height: "28px" }}></div>
         </Form.Group>
         <div style={{ height: "50px" }}></div>
       </Form>
       <Button
-        style={{ backgroundColor: "#B5A8A8" }}
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
