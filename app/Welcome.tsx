@@ -1,19 +1,14 @@
 import { ReactElement } from "react";
 import { Button } from "react-bootstrap";
+import { TextStyling } from "./utils";
+import styled from "styled-components";
 
 export function Welcome(props: { onLogout: () => void }): ReactElement {
   const { onLogout } = props;
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        color: "#FFF",
-        fontSize: "20px",
-        alignItems: "center",
-      }}
-    >
-      Welcome
+    <StyledWelcomePage>
+      <TextStyling>Welcome</TextStyling>
+
       <Button
         onClick={() => {
           onLogout();
@@ -22,6 +17,12 @@ export function Welcome(props: { onLogout: () => void }): ReactElement {
         Log out
       </Button>
       <Button>Delete account</Button>
-    </div>
+    </StyledWelcomePage>
   );
 }
+
+const StyledWelcomePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
