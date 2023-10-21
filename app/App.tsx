@@ -2,8 +2,14 @@ import { ReactElement, useState } from "react";
 import { Login } from "./Login";
 import { styled } from "styled-components";
 import { Welcome } from "./Welcome";
-import { PageDisplay } from "./utils";
 import { AccountCreation } from "./AccountCreation";
+
+enum PageDisplay {
+  Login,
+  Welcome,
+  AccountCreation,
+}
+
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
   return (
