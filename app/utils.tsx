@@ -8,7 +8,7 @@ export enum PageDisplay {
   Welcome,
 }
 
-export const TextStyling = styled.div`
+export const PageHeaderStyling = styled.div`
   color: #fff;
   font-size: 20px;
 `;

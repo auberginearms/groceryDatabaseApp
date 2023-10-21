@@ -2,7 +2,7 @@ import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { credentialsAreValid } from "@/server/getCredentials";
 import styled from "styled-components";
-import { StyledFormGroup, TextStyling } from "./utils";
+import { StyledFormGroup, PageHeaderStyling } from "./utils";
 
 export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
@@ -24,7 +24,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
           margin: "auto",
         }}
       >
-        <TextStyling>Let&apos;s find some deals</TextStyling>
+        <PageHeaderStyling>Let&apos;s find some deals</PageHeaderStyling>
         <div style={{ height: "50px" }}></div>
 
         <StyledFormGroup className="mb-3" controlId="exampleForm.ControlInput1">
