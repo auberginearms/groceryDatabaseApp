@@ -2,7 +2,12 @@ import { ReactElement, useState } from "react";
 import { Login } from "./Login";
 import { styled } from "styled-components";
 import { Welcome } from "./Welcome";
-import { PageDisplay } from "./utils";
+
+enum PageDisplay {
+  Login,
+  Welcome,
+}
+
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
   return (

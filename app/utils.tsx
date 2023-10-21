@@ -3,10 +3,6 @@ import { Credentials } from "./types";
 import axios from "axios";
 import { Form } from "react-bootstrap";
 
-export enum PageDisplay {
-  Login,
-  Welcome,
-}
 
 export const PageHeaderStyling = styled.div`
   color: #fff;
