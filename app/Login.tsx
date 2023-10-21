@@ -1,6 +1,9 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { credentialsAreValid } from "@/server/getCredentials";
+import styled from "styled-components";
+import { PageHeader } from "./ui/PageHeader";
+import { FormGroup } from "./ui/FormGroup";
 
 export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
@@ -8,51 +11,19 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const { onLoginSuccess } = props;
 
   return (
-    <div
-      style={{
-        fontFamily: "sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        verticalAlign: "middle",
-        alignSelf: "center",
-        flexGrow: 1,
-        justifyContent: "center",
-        margin: "auto",
-      }}
-    >
+    <Wrapper>
       <Form
         style={{
-          fontFamily: "sans-serif",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          verticalAlign: "middle",
-          alignSelf: "center",
-          flexGrow: 1,
-          justifyContent: "center",
-          margin: "auto",
         }}
       >
-        <div style={{ fontSize: "20px", color: "#FFFFFF" }}>
-          Let&apos;s find some deals
-        </div>
-        <div style={{ height: "50px" }}></div>
+        <PageHeader>Let&apos;s find some deals</PageHeader>
 
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlInput1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexGrow: 4,
-            color: "#FFFFFF",
-            fontSize: "12px",
-          }}
-        >
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            style={{ backgroundColor: "#B5A8A8" }}
+        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label style={{ marginBottom: 10 }}>Username</Form.Label>
+          <FormControl
             type="text"
             placeholder="enter your username"
             value={username}
@@ -61,36 +32,24 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
               setUsername(newUsername);
             }}
           />
-        </Form.Group>
+        </FormGroup>
 
-        <hr />
+        <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label style={{ marginBottom: 10 }}>Password</Form.Label>
 
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlTextarea1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            color: "#FFFFFF",
-            fontSize: "12px",
-          }}
-        >
-          <Form.Label>Password</Form.Label>
-          <Form.Control
+          <FormControl
             type="password"
             placeholder="enter your password"
             value={password}
-            style={{ backgroundColor: "#B5A8A8" }}
             onChange={(e) => {
               const newPassword = e.target.value;
               setPassword(newPassword);
             }}
           />
-        </Form.Group>
-        <div style={{ height: "50px" }}></div>
+        </FormGroup>
       </Form>
       <Button
-        style={{ backgroundColor: "#B5A8A8" }}
+        style={{ margin: 10 }}
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
@@ -99,6 +58,21 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
       >
         Login
       </Button>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  color: #fff;
+`;
+
+const FormControl = styled(Form.Control)`
+  width: 160px;
+  height: 32px;
+  background: #B5A8A8;
+}}`;

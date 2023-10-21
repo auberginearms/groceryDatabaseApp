@@ -1,11 +1,14 @@
 import { ReactElement } from "react";
 import { Button } from "react-bootstrap";
+import { PageHeader } from "./ui/PageHeader";
+import styled from "styled-components";
 
 export function Welcome(props: { onLogout: () => void }): ReactElement {
   const { onLogout } = props;
   return (
-    <div style={{ display: "flex" }}>
-      SUCCESS
+    <StyledWelcomePage>
+      <PageHeader>Welcome</PageHeader>
+
       <Button
         onClick={() => {
           onLogout();
@@ -13,6 +16,13 @@ export function Welcome(props: { onLogout: () => void }): ReactElement {
       >
         Log out
       </Button>
-    </div>
+      <Button>Delete account</Button>
+    </StyledWelcomePage>
   );
 }
+
+const StyledWelcomePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;

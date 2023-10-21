@@ -2,7 +2,12 @@ import { ReactElement, useState } from "react";
 import { Login } from "./Login";
 import { styled } from "styled-components";
 import { Welcome } from "./Welcome";
-import { PageDisplay } from "./utils";
+
+enum PageDisplay {
+  Login,
+  Welcome,
+}
+
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
   return (
@@ -29,10 +34,7 @@ export default App;
 
 const AppStyling = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: auto;
-  background: #090043;
-  width: auto;
-  height: 2000px;
+  flex: 1;
+  height: 100%;
+  justify-content: centre;
 `;
