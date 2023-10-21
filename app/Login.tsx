@@ -1,6 +1,9 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { credentialsAreValid } from "@/server/getCredentials";
+import styled from "styled-components";
+import { PageHeader } from "./ui/PageHeader";
+import { FormGroup } from "./ui/FormGroup";
 
 export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
@@ -8,57 +11,21 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const { onLoginSuccess } = props;
   const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
-    <div
-      style={{
-        fontFamily: "sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        verticalAlign: "middle",
-        alignSelf: "center",
-        flexGrow: 1,
-        justifyContent: "center",
-        margin: "auto",
-        color: "#FFF",
-      }}
-    >
+    <Wrapper>
       {displayInvalidMessage ? "Invalid login details" : null}
-      <div style={{ height: "20px" }}></div>
+
       <Form
         style={{
-          fontFamily: "sans-serif",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          verticalAlign: "middle",
-          alignSelf: "center",
-          flexGrow: 1,
-          justifyContent: "center",
-          margin: "auto",
         }}
       >
-        <div style={{ fontSize: "20px" }}>Let&apos;s find some deals</div>
-        <div style={{ height: "50px" }}></div>
+        <PageHeader>Let&apos;s find some deals</PageHeader>
 
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlInput1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            flexGrow: 4,
-            fontSize: "12px",
-          }}
-        >
-          <Form.Label>Username</Form.Label>
-          <div style={{ height: "10px" }}></div>
-          <Form.Control
-            style={{
-              width: "160px",
-              height: "32px",
-              flexShrink: "0",
-              background: "#B5A8A8",
-            }}
+        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
+          <Form.Label style={{ marginBottom: 10 }}>Username</Form.Label>
+          <FormControl
             type="text"
             placeholder="enter your username"
             value={username}
@@ -67,30 +34,12 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
               setUsername(newUsername);
             }}
           />
-        </Form.Group>
+        </FormGroup>
 
-        <div style={{ height: "20px" }}></div>
+        <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
+          <Form.Label style={{ marginBottom: 10 }}>Password</Form.Label>
 
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlTextarea1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-
-            fontSize: "12px",
-          }}
-        >
-          <Form.Label>Password</Form.Label>
-          <div style={{ height: "10px" }}></div>
-
-          <Form.Control
-            style={{
-              width: "160px",
-              height: "32px",
-              flexShrink: "0",
-              background: "#B5A8A8",
-            }}
+          <FormControl
             type="password"
             placeholder="enter your password"
             value={password}
@@ -99,11 +48,10 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
               setPassword(newPassword);
             }}
           />
-          <div style={{ height: "28px" }}></div>
-        </Form.Group>
-        <div style={{ height: "50px" }}></div>
+        </FormGroup>
       </Form>
       <Button
+        style={{ margin: 10 }}
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
@@ -114,6 +62,21 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
       >
         Login
       </Button>
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  color: #fff;
+`;
+
+const FormControl = styled(Form.Control)`
+  width: 160px;
+  height: 32px;
+  background: #B5A8A8;
+}}`;
