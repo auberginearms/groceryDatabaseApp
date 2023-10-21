@@ -6,7 +6,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { onLoginSuccess } = props;
-
+  const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
     <div
       style={{
@@ -22,6 +22,8 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         color: "#FFF",
       }}
     >
+      {displayInvalidMessage ? "Invalid login details" : null}
+      <div style={{ height: "20px" }}></div>
       <Form
         style={{
           fontFamily: "sans-serif",
@@ -105,6 +107,8 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
+          } else {
+            setDisplayInvalidMessage(true);
           }
         }}
       >
