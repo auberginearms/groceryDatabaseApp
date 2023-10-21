@@ -20,7 +20,6 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         }}
       >
         <PageHeader>Let&apos;s find some deals</PageHeader>
-        <div style={{ height: "50px" }}></div>
 
         <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label style={{ marginBottom: 10 }}>Username</Form.Label>
