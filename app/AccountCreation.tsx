@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
+import { Wrapper } from "./ui/Wrapper";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
@@ -15,7 +16,7 @@ export function AccountCreation(props: {
   const [password, setPassword] = useState("");
 
   return (
-    <AccountCreationStyling>
+    <Wrapper>
       {errorMessage}
       <div style={{ height: "20px" }}></div>
       <Form
@@ -92,15 +93,6 @@ export function AccountCreation(props: {
       >
         Go Back
       </Button>
-    </AccountCreationStyling>
+    </Wrapper>
   );
 }
-
-const AccountCreationStyling = styled.div`
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  color: #fff;
-`;

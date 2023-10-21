@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
+import { Wrapper } from "./ui/Wrapper";
 
 export function Login(props: {
   onLoginSuccess: () => void;
@@ -77,11 +78,3 @@ export function Login(props: {
   );
 }
 
-const Wrapper = styled.div`
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: auto;
-  color: #fff;
-`;
