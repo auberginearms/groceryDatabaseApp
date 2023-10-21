@@ -14,15 +14,9 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
     <Wrapper>
       <Form
         style={{
-          fontFamily: "sans-serif",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          verticalAlign: "middle",
-          alignSelf: "center",
-          flexGrow: 1,
-          justifyContent: "center",
-          margin: "auto",
         }}
       >
         <PageHeader>Let&apos;s find some deals</PageHeader>
