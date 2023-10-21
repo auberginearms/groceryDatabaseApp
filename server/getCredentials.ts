@@ -24,3 +24,9 @@ export async function credentialsAreValid(
     );
   });
 }
+
+export async function userNameAlreadyExists(inputUsername: string) {
+  return validLoginDetails.some((loginDetails) => {
+    return loginDetails.username === inputUsername;
+  });
+}

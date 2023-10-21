@@ -1,46 +1,28 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { credentialsAreValid } from "@/server/getCredentials";
+import { userNameAlreadyExists } from "@/server/getCredentials";
+import styled from "styled-components";
 
-export function Login(props: {
-  onLoginSuccess: () => void;
-  onAccountCreationClick: () => void;
+export function AccountCreation(props: {
+  backToLogin: () => void;
 }): ReactElement {
+  const { backToLogin } = props;
+  const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLoginSuccess, onAccountCreationClick } = props;
-  const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
+
   return (
-    <div
-      style={{
-        fontFamily: "sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        verticalAlign: "middle",
-        alignSelf: "center",
-        flexGrow: 1,
-        justifyContent: "center",
-        margin: "auto",
-        color: "#FFF",
-      }}
-    >
-      {displayInvalidMessage ? "Invalid login details" : null}
+    <AccountCreationStyling>
+      {errorMessage}
       <div style={{ height: "20px" }}></div>
       <Form
         style={{
-          fontFamily: "sans-serif",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          verticalAlign: "middle",
-          alignSelf: "center",
-          flexGrow: 1,
-          justifyContent: "center",
-          margin: "auto",
         }}
       >
-        <div style={{ fontSize: "20px" }}>Let&apos;s find some deals</div>
+        <div style={{ fontSize: "20px" }}>Create your account</div>
         <div style={{ height: "50px" }}></div>
 
         <Form.Group
@@ -49,7 +31,6 @@ export function Login(props: {
           style={{
             display: "flex",
             flexDirection: "column",
-            flexGrow: 4,
             fontSize: "12px",
           }}
         >
@@ -80,7 +61,6 @@ export function Login(props: {
           style={{
             display: "flex",
             flexDirection: "column",
-
             fontSize: "12px",
           }}
         >
@@ -107,23 +87,42 @@ export function Login(props: {
       </Form>
       <Button
         onClick={async () => {
-          if (await credentialsAreValid(username, password)) {
-            onLoginSuccess();
+          if (await userNameAlreadyExists(username)) {
+            return setErrorMessage("Username already exists");
+          }
+          if (username === "") {
+            return setErrorMessage("Username cannot be empty");
+          }
+          if (password === "") {
+            return setErrorMessage("Password cannot be empty");
+          }
+          if (username === "" && password === "") {
+            return setErrorMessage("Username and password cannot be empty");
           } else {
-            setDisplayInvalidMessage(true);
+            setErrorMessage("");
+            console.log("create account");
           }
         }}
       >
-        Login
+        Submit
       </Button>
       <div style={{ height: "28px" }}></div>
       <Button
         onClick={() => {
-          onAccountCreationClick();
+          backToLogin();
         }}
       >
-        Create account
+        Go Back
       </Button>
-    </div>
+    </AccountCreationStyling>
   );
 }
+
+const AccountCreationStyling = styled.div`
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  color: #fff;
+`;

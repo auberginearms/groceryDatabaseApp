@@ -3,6 +3,7 @@ import { Login } from "./Login";
 import { styled } from "styled-components";
 import { Welcome } from "./Welcome";
 import { PageDisplay } from "./utils";
+import { AccountCreation } from "./AccountCreation";
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
   return (
@@ -12,11 +13,21 @@ function App(): ReactElement {
           onLoginSuccess={() => {
             setdisplayPage(PageDisplay.Welcome);
           }}
+          onAccountCreationClick={() => {
+            setdisplayPage(PageDisplay.AccountCreation);
+          }}
         />
       )}
       {displayPage === PageDisplay.Welcome && (
         <Welcome
           onLogout={() => {
+            setdisplayPage(PageDisplay.Login);
+          }}
+        />
+      )}
+      {displayPage === PageDisplay.AccountCreation && (
+        <AccountCreation
+          backToLogin={() => {
             setdisplayPage(PageDisplay.Login);
           }}
         />
