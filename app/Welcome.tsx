@@ -1,13 +1,13 @@
 import { ReactElement } from "react";
 import { Button } from "react-bootstrap";
-import { PageHeaderStyling } from "./utils";
+import { PageHeader } from "./ui/PageHeader";
 import styled from "styled-components";
 
 export function Welcome(props: { onLogout: () => void }): ReactElement {
   const { onLogout } = props;
   return (
     <StyledWelcomePage>
-      <PageHeaderStyling>Welcome</PageHeaderStyling>
+      <PageHeader>Welcome</PageHeader>
 
       <Button
         onClick={() => {
