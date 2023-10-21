@@ -4,6 +4,7 @@ import { credentialsAreValid } from "@/server/getCredentials";
 import styled from "styled-components";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
+import { FormControl } from "./ui/FormControl";
 
 export function Login(props: {
   onLoginSuccess: () => void;
@@ -83,10 +84,4 @@ const Wrapper = styled.div`
   align-items: center;
   margin: auto;
   color: #fff;
-`;
-
-const FormControl = styled(Form.Control)`
-  width: 160px;
-  height: 32px;
-  background: #b5a8a8;
 `;

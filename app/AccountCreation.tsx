@@ -2,6 +2,9 @@ import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { userNameAlreadyExists } from "@/server/getCredentials";
 import styled from "styled-components";
+import { PageHeader } from "./ui/PageHeader";
+import { FormGroup } from "./ui/FormGroup";
+import { FormControl } from "./ui/FormControl";
 
 export function AccountCreation(props: {
   backToLogin: () => void;
@@ -22,27 +25,11 @@ export function AccountCreation(props: {
           alignItems: "center",
         }}
       >
-        <div style={{ fontSize: "20px" }}>Create your account</div>
-        <div style={{ height: "50px" }}></div>
+        <PageHeader>Create your account</PageHeader>
 
-        <Form.Group
-          className="mb-3"
-          controlId="exampleForm.ControlInput1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: "12px",
-          }}
-        >
+        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label>Username</Form.Label>
-          <div style={{ height: "10px" }}></div>
-          <Form.Control
-            style={{
-              width: "160px",
-              height: "32px",
-              flexShrink: "0",
-              background: "#B5A8A8",
-            }}
+          <FormControl
             type="text"
             placeholder="enter your username"
             value={username}
@@ -51,11 +38,9 @@ export function AccountCreation(props: {
               setUsername(newUsername);
             }}
           />
-        </Form.Group>
+        </FormGroup>
 
-        <div style={{ height: "20px" }}></div>
-
-        <Form.Group
+        <FormGroup
           className="mb-3"
           controlId="exampleForm.ControlTextarea1"
           style={{
@@ -67,13 +52,7 @@ export function AccountCreation(props: {
           <Form.Label>Password</Form.Label>
           <div style={{ height: "10px" }}></div>
 
-          <Form.Control
-            style={{
-              width: "160px",
-              height: "32px",
-              flexShrink: "0",
-              background: "#B5A8A8",
-            }}
+          <FormControl
             type="password"
             placeholder="enter your password"
             value={password}
@@ -82,8 +61,7 @@ export function AccountCreation(props: {
               setPassword(newPassword);
             }}
           />
-          <div style={{ height: "28px" }}></div>
-        </Form.Group>
+        </FormGroup>
       </Form>
       <Button
         onClick={async () => {
