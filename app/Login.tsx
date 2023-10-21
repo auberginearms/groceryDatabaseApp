@@ -2,7 +2,8 @@ import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { credentialsAreValid } from "@/server/getCredentials";
 import styled from "styled-components";
-import { StyledFormGroup, PageHeaderStyling } from "./utils";
+import { PageHeader } from "./ui/PageHeader";
+import { FormGroup } from "./ui/FormGroup";
 
 export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
@@ -10,7 +11,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const { onLoginSuccess } = props;
 
   return (
-    <StyledLogin>
+    <Wrapper>
       <Form
         style={{
           fontFamily: "sans-serif",
@@ -24,12 +25,12 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
           margin: "auto",
         }}
       >
-        <PageHeaderStyling>Let&apos;s find some deals</PageHeaderStyling>
+        <PageHeader>Let&apos;s find some deals</PageHeader>
         <div style={{ height: "50px" }}></div>
 
-        <StyledFormGroup className="mb-3" controlId="exampleForm.ControlInput1">
+        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
           <Form.Label style={{ marginBottom: 10 }}>Username</Form.Label>
-          <StyledFormControl
+          <FormControl
             type="text"
             placeholder="enter your username"
             value={username}
@@ -38,15 +39,12 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
               setUsername(newUsername);
             }}
           />
-        </StyledFormGroup>
+        </FormGroup>
 
-        <StyledFormGroup
-          className="mb-3"
-          controlId="exampleForm.ControlTextarea1"
-        >
+        <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
           <Form.Label style={{ marginBottom: 10 }}>Password</Form.Label>
 
-          <StyledFormControl
+          <FormControl
             type="password"
             placeholder="enter your password"
             value={password}
@@ -55,7 +53,7 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
               setPassword(newPassword);
             }}
           />
-        </StyledFormGroup>
+        </FormGroup>
       </Form>
       <Button
         style={{ margin: 10 }}
@@ -67,11 +65,11 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
       >
         Login
       </Button>
-    </StyledLogin>
+    </Wrapper>
   );
 }
 
-const StyledLogin = styled.div`
+const Wrapper = styled.div`
   font-family: sans-serif;
   display: flex;
   flex-direction: column;
@@ -80,7 +78,7 @@ const StyledLogin = styled.div`
   color: #fff;
 `;
 
-const StyledFormControl = styled(Form.Control)`
+const FormControl = styled(Form.Control)`
   width: 160px;
   height: 32px;
   background: #B5A8A8;
