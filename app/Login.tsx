@@ -9,9 +9,11 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { onLoginSuccess } = props;
-
+  const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
     <Wrapper>
+      {displayInvalidMessage ? "Invalid login details" : null}
+
       <Form
         style={{
           display: "flex",
@@ -53,6 +55,8 @@ export function Login(props: { onLoginSuccess: () => void }): ReactElement {
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
+          } else {
+            setDisplayInvalidMessage(true);
           }
         }}
       >
