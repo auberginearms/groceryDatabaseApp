@@ -33,7 +33,7 @@ function App(): ReactElement {
       )}
       {displayPage === PageDisplay.AccountCreation && (
         <AccountCreation
-          backToLogin={() => {
+          onGoBackClick={() => {
             setdisplayPage(PageDisplay.Login);
           }}
         />

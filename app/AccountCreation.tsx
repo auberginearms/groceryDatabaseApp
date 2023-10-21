@@ -7,9 +7,9 @@ import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 
 export function AccountCreation(props: {
-  backToLogin: () => void;
+  onGoBackClick: () => void;
 }): ReactElement {
-  const { backToLogin } = props;
+  const { onGoBackClick } = props;
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -87,7 +87,7 @@ export function AccountCreation(props: {
       <div style={{ height: "28px" }}></div>
       <Button
         onClick={() => {
-          backToLogin();
+          onGoBackClick();
         }}
       >
         Go Back
