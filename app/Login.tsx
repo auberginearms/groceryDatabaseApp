@@ -1,11 +1,11 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { credentialsAreValid } from "@/server/getCredentials";
-import styled from "styled-components";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 import { Wrapper } from "./ui/Wrapper";
+import { FormLabel } from "./ui/FormLabel";
 
 export function Login(props: {
   onLoginSuccess: () => void;
@@ -28,8 +28,8 @@ export function Login(props: {
       >
         <PageHeader>Let&apos;s find some deals</PageHeader>
 
-        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label style={{ marginBottom: 10 }}>Username</Form.Label>
+        <FormGroup>
+          <FormLabel>Username</FormLabel>
           <FormControl
             type="text"
             placeholder="enter your username"
@@ -41,8 +41,8 @@ export function Login(props: {
           />
         </FormGroup>
 
-        <FormGroup className="mb-3" controlId="exampleForm.ControlTextarea1">
-          <Form.Label style={{ marginBottom: 10 }}>Password</Form.Label>
+        <FormGroup>
+          <FormLabel>Password</FormLabel>
 
           <FormControl
             type="password"
@@ -68,6 +68,7 @@ export function Login(props: {
         Login
       </Button>
       <Button
+        style={{ margin: 10 }}
         onClick={() => {
           onAccountCreationClick();
         }}
@@ -77,4 +78,3 @@ export function Login(props: {
     </Wrapper>
   );
 }
-

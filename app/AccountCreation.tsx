@@ -1,11 +1,11 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { userNameAlreadyExists } from "@/server/getCredentials";
-import styled from "styled-components";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 import { Wrapper } from "./ui/Wrapper";
+import { FormLabel } from "./ui/FormLabel";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
@@ -18,7 +18,6 @@ export function AccountCreation(props: {
   return (
     <Wrapper>
       {errorMessage}
-      <div style={{ height: "20px" }}></div>
       <Form
         style={{
           display: "flex",
@@ -29,7 +28,7 @@ export function AccountCreation(props: {
         <PageHeader>Create your account</PageHeader>
 
         <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
-          <Form.Label>Username</Form.Label>
+          <FormLabel>Username</FormLabel>
           <FormControl
             type="text"
             placeholder="enter your username"
@@ -50,8 +49,7 @@ export function AccountCreation(props: {
             fontSize: "12px",
           }}
         >
-          <Form.Label>Password</Form.Label>
-          <div style={{ height: "10px" }}></div>
+          <FormLabel>Password</FormLabel>
 
           <FormControl
             type="password"
@@ -65,6 +63,7 @@ export function AccountCreation(props: {
         </FormGroup>
       </Form>
       <Button
+        style={{ margin: 10 }}
         onClick={async () => {
           if (await userNameAlreadyExists(username)) {
             return setErrorMessage("Username already exists");
@@ -85,8 +84,8 @@ export function AccountCreation(props: {
       >
         Submit
       </Button>
-      <div style={{ height: "28px" }}></div>
       <Button
+        style={{ margin: 10 }}
         onClick={() => {
           onGoBackClick();
         }}
