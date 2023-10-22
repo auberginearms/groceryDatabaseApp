@@ -63,7 +63,8 @@ export function AccountCreation(props: {
           }
           if (username === "" && password === "") {
             return setErrorMessage("Username and password cannot be empty");
-          } else {
+          }
+          {
             setErrorMessage("");
             console.log("create account");
           }
