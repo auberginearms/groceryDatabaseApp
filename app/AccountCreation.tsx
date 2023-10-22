@@ -52,9 +52,6 @@ export function AccountCreation(props: {
       <Button
         style={{ margin: 10 }}
         onClick={async () => {
-          if (await usernameAlreadyExists(username)) {
-            return setErrorMessage("Username already exists");
-          }
           if (username === "") {
             return setErrorMessage("Username cannot be empty");
           }
@@ -63,6 +60,9 @@ export function AccountCreation(props: {
           }
           if (username === "" && password === "") {
             return setErrorMessage("Username and password cannot be empty");
+          }
+          if (await usernameAlreadyExists(username)) {
+            return setErrorMessage("Username already exists");
           }
           {
             setErrorMessage("");
