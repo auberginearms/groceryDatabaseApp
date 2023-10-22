@@ -6,6 +6,7 @@ import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 import { Wrapper } from "./ui/Wrapper";
 import { FormLabel } from "./ui/FormLabel";
+import { StyledForm } from "./ui/StyledForm";
 
 export function Login(props: {
   onLoginSuccess: () => void;
@@ -19,13 +20,7 @@ export function Login(props: {
     <Wrapper>
       {displayInvalidMessage ? "Invalid login details" : null}
 
-      <Form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <StyledForm>
         <PageHeader>Let&apos;s find some deals</PageHeader>
 
         <FormGroup>
@@ -54,7 +49,7 @@ export function Login(props: {
             }}
           />
         </FormGroup>
-      </Form>
+      </StyledForm>
       <Button
         style={{ margin: 10 }}
         onClick={async () => {

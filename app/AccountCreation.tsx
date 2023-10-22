@@ -1,11 +1,12 @@
 import { ReactElement, useState } from "react";
-import { Button, Form } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { userNameAlreadyExists } from "@/server/getCredentials";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 import { Wrapper } from "./ui/Wrapper";
 import { FormLabel } from "./ui/FormLabel";
+import { StyledForm } from "./ui/StyledForm";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
@@ -18,16 +19,10 @@ export function AccountCreation(props: {
   return (
     <Wrapper>
       {errorMessage}
-      <Form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+      <StyledForm>
         <PageHeader>Create your account</PageHeader>
 
-        <FormGroup className="mb-3" controlId="exampleForm.ControlInput1">
+        <FormGroup>
           <FormLabel>Username</FormLabel>
           <FormControl
             type="text"
@@ -40,15 +35,7 @@ export function AccountCreation(props: {
           />
         </FormGroup>
 
-        <FormGroup
-          className="mb-3"
-          controlId="exampleForm.ControlTextarea1"
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: "12px",
-          }}
-        >
+        <FormGroup>
           <FormLabel>Password</FormLabel>
 
           <FormControl
@@ -61,7 +48,7 @@ export function AccountCreation(props: {
             }}
           />
         </FormGroup>
-      </Form>
+      </StyledForm>
       <Button
         style={{ margin: 10 }}
         onClick={async () => {
