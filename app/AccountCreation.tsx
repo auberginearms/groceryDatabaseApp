@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Button } from "react-bootstrap";
-import { userNameAlreadyExists } from "@/server/getCredentials";
+import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
@@ -52,7 +52,7 @@ export function AccountCreation(props: {
       <Button
         style={{ margin: 10 }}
         onClick={async () => {
-          if (await userNameAlreadyExists(username)) {
+          if (await usernameAlreadyExists(username)) {
             return setErrorMessage("Username already exists");
           }
           if (username === "") {

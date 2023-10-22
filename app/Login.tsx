@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 import { Button, Form } from "react-bootstrap";
-import { credentialsAreValid } from "@/server/getCredentials";
+import { credentialsAreValid } from "@/server/credentialsAreValid";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
