@@ -58,9 +58,6 @@ export function AccountCreation(props: {
           if (password === "") {
             return setErrorMessage("Password cannot be empty");
           }
-          if (username === "" && password === "") {
-            return setErrorMessage("Username and password cannot be empty");
-          }
           if (await usernameAlreadyExists(username)) {
             return setErrorMessage("Username already exists");
           }
