@@ -1,12 +1,12 @@
 import { ReactElement, useState } from "react";
 import { Button } from "react-bootstrap";
-import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
-import { FormControl } from "./ui/FormControl";
 import { Wrapper } from "./ui/Wrapper";
-import { FormLabel } from "./ui/FormLabel";
 import { StyledForm } from "./ui/StyledForm";
+import { FormLabel } from "./ui/FormLabel";
+import { FormControl } from "./ui/FormControl";
+import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
@@ -61,10 +61,8 @@ export function AccountCreation(props: {
           if (await usernameAlreadyExists(username)) {
             return setErrorMessage("Username already exists");
           }
-          {
-            setErrorMessage("");
-            console.log("create account");
-          }
+          setErrorMessage("");
+          console.log("create account");
         }}
       >
         Submit
