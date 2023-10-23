@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { credentialsAreValid } from "@/server/credentialsAreValid";
+import { Button } from "react-bootstrap";
+import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
@@ -8,20 +8,19 @@ import { Wrapper } from "./ui/Wrapper";
 import { FormLabel } from "./ui/FormLabel";
 import { StyledForm } from "./ui/StyledForm";
 
-export function Login(props: {
-  onLoginSuccess: () => void;
-  onAccountCreationClick: () => void;
+export function AccountCreation(props: {
+  onGoBackClick: () => void;
 }): ReactElement {
+  const { onGoBackClick } = props;
+  const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLoginSuccess, onAccountCreationClick } = props;
-  const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
+
   return (
     <Wrapper>
-      {displayInvalidMessage ? "Invalid login details" : null}
-
+      {errorMessage}
       <StyledForm>
-        <PageHeader>Let&apos;s find some deals</PageHeader>
+        <PageHeader>Create your account</PageHeader>
 
         <FormGroup>
           <FormLabel>Username</FormLabel>
@@ -53,22 +52,30 @@ export function Login(props: {
       <Button
         style={{ margin: 10 }}
         onClick={async () => {
-          if (await credentialsAreValid(username, password)) {
-            onLoginSuccess();
-          } else {
-            setDisplayInvalidMessage(true);
+          if (username === "") {
+            return setErrorMessage("Username cannot be empty");
+          }
+          if (password === "") {
+            return setErrorMessage("Password cannot be empty");
+          }
+          if (await usernameAlreadyExists(username)) {
+            return setErrorMessage("Username already exists");
+          }
+          {
+            setErrorMessage("");
+            console.log("create account");
           }
         }}
       >
-        Login
+        Submit
       </Button>
       <Button
         style={{ margin: 10 }}
         onClick={() => {
-          onAccountCreationClick();
+          onGoBackClick();
         }}
       >
-        Create account
+        Go Back
       </Button>
     </Wrapper>
   );
