@@ -36,6 +36,9 @@ function App(): ReactElement {
           onGoBackClick={() => {
             setdisplayPage(PageDisplay.Login);
           }}
+          onSubmitSuccess={() => {
+            setdisplayPage(PageDisplay.Login);
+          }}
         />
       )}
     </AppStyling>

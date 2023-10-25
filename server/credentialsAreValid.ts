@@ -1,15 +1,19 @@
 "use server";
 
-import { validLoginDetails } from "./getCredentials";
+import prisma from "@/lib/prisma";
 
 export async function credentialsAreValid(
   inputUsername: string,
   inputPassword: string
 ) {
-  return validLoginDetails.some((loginDetails, index) => {
+  const result = await prisma.user.findMany();
+  const existingCredentials = result.map((users) => {
+    return { username: users.username, password: users.password };
+  });
+  return existingCredentials.some((loginDetails, index) => {
     return (
       loginDetails.username === inputUsername &&
-      validLoginDetails[index].password === inputPassword
+      existingCredentials[index].password === inputPassword
     );
   });
 }

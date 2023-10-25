@@ -10,8 +10,9 @@ import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
+  onSubmitSuccess: () => void;
 }): ReactElement {
-  const { onGoBackClick } = props;
+  const { onGoBackClick, onSubmitSuccess } = props;
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -63,6 +64,7 @@ export function AccountCreation(props: {
           }
           setErrorMessage("");
           console.log("create account");
+          onSubmitSuccess();
         }}
       >
         Submit
