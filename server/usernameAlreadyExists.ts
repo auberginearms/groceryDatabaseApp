@@ -1,6 +1,6 @@
 "use server";
 
-import { validLoginDetails } from "./getCredentials";
+import prisma from "@/lib/prisma";
 
 export async function usernameAlreadyExists(inputUsername: string) {
   return validLoginDetails.some((loginDetails) => {
