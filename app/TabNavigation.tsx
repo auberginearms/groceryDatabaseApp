@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { PageHeader } from "./ui/PageHeader";
 import styled from "styled-components";
 
-export function Welcome(props: { onLogout: () => void }): ReactElement {
+export function TabNavigation(props: { onLogout: () => void }): ReactElement {
   const { onLogout } = props;
   return (
     <StyledWelcomePage>
