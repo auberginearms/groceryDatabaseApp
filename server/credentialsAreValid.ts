@@ -6,13 +6,8 @@ export async function credentialsAreValid(
   inputUsername: string,
   inputPassword: string
 ) {
-  const passwordOfExistingUsername = await prisma.user.findFirst({
-    where: { username: inputUsername },
-    select: { password: true },
+  const result = await prisma.user.findFirst({
+    where: { password: inputPassword, username: inputUsername },
   });
-  if (passwordOfExistingUsername !== null) {
-    return passwordOfExistingUsername.password === inputPassword;
-  } else {
-    return false;
-  }
+  return result !== null;
 }
