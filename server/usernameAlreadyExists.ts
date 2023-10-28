@@ -1,9 +1,10 @@
 "use server";
 
-import { validLoginDetails } from "./getCredentials";
+import prisma from "@/lib/prisma";
 
 export async function usernameAlreadyExists(inputUsername: string) {
-  return validLoginDetails.some((loginDetails) => {
-    return loginDetails.username === inputUsername;
+  const result = await prisma.user.findFirst({
+    where: { username: inputUsername },
   });
+  return result !== null;
 }
