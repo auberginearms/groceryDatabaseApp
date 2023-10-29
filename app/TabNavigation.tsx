@@ -51,33 +51,6 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
       {displayTab === TabDisplay.Location && <Location />}
-      <div>
-        <Button
-          style={{
-            height: 32,
-            margin: 10,
-            backgroundColor: "#B5A8A8",
-            borderRadius: 12,
-            fontSize: 12,
-          }}
-          onClick={() => {
-            onLogout();
-          }}
-        >
-          Log out
-        </Button>
-        <Button
-          style={{
-            height: 32,
-            margin: 10,
-            backgroundColor: "#B5A8A8",
-            borderRadius: 12,
-            fontSize: 12,
-          }}
-        >
-          Delete account
-        </Button>
-      </div>
     </Wrapper>
   );
 }
