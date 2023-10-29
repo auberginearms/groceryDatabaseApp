@@ -18,6 +18,11 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
       <div style={{ flexDirection: "row" }}>
         <Button
           style={{
+            height: 32,
+            width: 150,
+            margin: 10,
+            borderRadius: 12,
+            fontSize: 12,
             backgroundColor:
               displayTab === TabDisplay.Deals ? "#E86868" : "#B5A8A8",
           }}
@@ -29,6 +34,11 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
         </Button>
         <Button
           style={{
+            height: 32,
+            width: 150,
+            margin: 10,
+            borderRadius: 12,
+            fontSize: 12,
             backgroundColor:
               displayTab === TabDisplay.Location ? "#E86868" : "#B5A8A8",
           }}
@@ -43,13 +53,30 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
       {displayTab === TabDisplay.Location && <Location />}
       <div>
         <Button
+          style={{
+            height: 32,
+            margin: 10,
+            backgroundColor: "#B5A8A8",
+            borderRadius: 12,
+            fontSize: 12,
+          }}
           onClick={() => {
             onLogout();
           }}
         >
           Log out
         </Button>
-        <Button>Delete account</Button>
+        <Button
+          style={{
+            height: 32,
+            margin: 10,
+            backgroundColor: "#B5A8A8",
+            borderRadius: 12,
+            fontSize: 12,
+          }}
+        >
+          Delete account
+        </Button>
       </div>
     </Wrapper>
   );

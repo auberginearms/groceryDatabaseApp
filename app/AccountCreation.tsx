@@ -51,7 +51,13 @@ export function AccountCreation(props: {
         </FormGroup>
       </StyledForm>
       <Button
-        style={{ margin: 10 }}
+        style={{
+          height: 32,
+          margin: 10,
+          backgroundColor: "#B5A8A8",
+          borderRadius: 12,
+          fontSize: 12,
+        }}
         onClick={async () => {
           if (username === "") {
             return setErrorMessage("Username cannot be empty");
@@ -70,7 +76,13 @@ export function AccountCreation(props: {
         Submit
       </Button>
       <Button
-        style={{ margin: 10 }}
+        style={{
+          height: 32,
+          margin: 10,
+          backgroundColor: "#B5A8A8",
+          borderRadius: 12,
+          fontSize: 12,
+        }}
         onClick={() => {
           onGoBackClick();
         }}

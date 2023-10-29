@@ -51,7 +51,13 @@ export function Login(props: {
         </FormGroup>
       </StyledForm>
       <Button
-        style={{ margin: 10 }}
+        style={{
+          height: 32,
+          margin: 10,
+          backgroundColor: "#B5A8A8",
+          borderRadius: 12,
+          fontSize: 12,
+        }}
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
@@ -60,10 +66,16 @@ export function Login(props: {
           }
         }}
       >
-        Login
+        Log in
       </Button>
       <Button
-        style={{ margin: 10 }}
+        style={{
+          height: 32,
+          margin: 10,
+          backgroundColor: "#B5A8A8",
+          borderRadius: 12,
+          fontSize: 12,
+        }}
         onClick={() => {
           onAccountCreationClick();
         }}

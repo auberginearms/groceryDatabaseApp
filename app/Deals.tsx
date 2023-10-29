@@ -4,7 +4,7 @@ import { PageHeader } from "./ui/PageHeader";
 export function Deals(): ReactElement {
   return (
     <div>
-      <PageHeader>DEALS</PageHeader>
+      <PageHeader>Deals go here</PageHeader>
     </div>
   );
 }
