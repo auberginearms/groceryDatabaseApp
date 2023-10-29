@@ -1,7 +1,5 @@
 import { ReactElement, useState } from "react";
 import { Button } from "react-bootstrap";
-import { PageHeader } from "./ui/PageHeader";
-import styled from "styled-components";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
 import { Location } from "./Location";
