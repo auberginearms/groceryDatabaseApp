@@ -7,6 +7,7 @@ import { StyledForm } from "./ui/StyledForm";
 import { FormLabel } from "./ui/FormLabel";
 import { FormControl } from "./ui/FormControl";
 import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
+import { createNewAccount } from "@/server/createNewAccount";
 
 export function AccountCreation(props: {
   onGoBackClick: () => void;
@@ -70,6 +71,7 @@ export function AccountCreation(props: {
           }
           setErrorMessage("");
           console.log("create account");
+          createNewAccount(username, password);
           onSubmitSuccess();
         }}
       >
