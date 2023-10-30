@@ -7,6 +7,7 @@ import { StyledForm } from "./ui/StyledForm";
 import { FormLabel } from "./ui/FormLabel";
 import { FormControl } from "./ui/FormControl";
 import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
+import { LargeButton } from "./ui/LargeButton";
 import { createNewAccount } from "@/server/createNewAccount";
 
 export function AccountCreation(props: {
@@ -51,14 +52,7 @@ export function AccountCreation(props: {
           />
         </FormGroup>
       </StyledForm>
-      <Button
-        style={{
-          height: 32,
-          margin: 10,
-          backgroundColor: "#B5A8A8",
-          borderRadius: 12,
-          fontSize: 12,
-        }}
+      <LargeButton
         onClick={async () => {
           if (username === "") {
             return setErrorMessage("Username cannot be empty");
@@ -76,21 +70,8 @@ export function AccountCreation(props: {
         }}
       >
         Submit
-      </Button>
-      <Button
-        style={{
-          height: 32,
-          margin: 10,
-          backgroundColor: "#B5A8A8",
-          borderRadius: 12,
-          fontSize: 12,
-        }}
-        onClick={() => {
-          onGoBackClick();
-        }}
-      >
-        Go Back
-      </Button>
+      </LargeButton>
+      <LargeButton onClick={onGoBackClick}>Go back</LargeButton>
     </Wrapper>
   );
 }
