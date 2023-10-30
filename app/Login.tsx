@@ -1,5 +1,4 @@
 import { ReactElement, useState } from "react";
-import { Button } from "react-bootstrap";
 import { PageHeader } from "./ui/PageHeader";
 import { FormGroup } from "./ui/FormGroup";
 import { credentialsAreValid } from "@/server/credentialsAreValid";
@@ -7,6 +6,7 @@ import { Wrapper } from "./ui/Wrapper";
 import { StyledForm } from "./ui/StyledForm";
 import { FormLabel } from "./ui/FormLabel";
 import { FormControl } from "./ui/FormControl";
+import { LargeButton } from "./ui/LargeButton";
 
 export function Login(props: {
   onLoginSuccess: () => void;
@@ -50,14 +50,8 @@ export function Login(props: {
           />
         </FormGroup>
       </StyledForm>
-      <Button
-        style={{
-          height: 32,
-          margin: 10,
-          backgroundColor: "#B5A8A8",
-          borderRadius: 12,
-          fontSize: 12,
-        }}
+      <LargeButton
+        children="Log in"
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
@@ -65,23 +59,11 @@ export function Login(props: {
             setDisplayInvalidMessage(true);
           }
         }}
-      >
-        Log in
-      </Button>
-      <Button
-        style={{
-          height: 32,
-          margin: 10,
-          backgroundColor: "#B5A8A8",
-          borderRadius: 12,
-          fontSize: 12,
-        }}
-        onClick={() => {
-          onAccountCreationClick();
-        }}
-      >
-        Create account
-      </Button>
+      ></LargeButton>
+      <LargeButton
+        onClick={onAccountCreationClick}
+        children={"Create account"}
+      ></LargeButton>
     </Wrapper>
   );
 }
