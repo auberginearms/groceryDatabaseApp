@@ -51,7 +51,6 @@ export function Login(props: {
         </FormGroup>
       </StyledForm>
       <LargeButton
-        children="Log in"
         onClick={async () => {
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
@@ -59,11 +58,10 @@ export function Login(props: {
             setDisplayInvalidMessage(true);
           }
         }}
-      ></LargeButton>
-      <LargeButton
-        onClick={onAccountCreationClick}
-        children={"Create account"}
-      ></LargeButton>
+      >
+        Log in
+      </LargeButton>
+      <LargeButton onClick={onAccountCreationClick}>Create account</LargeButton>
     </Wrapper>
   );
 }

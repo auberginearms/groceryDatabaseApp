@@ -52,7 +52,6 @@ export function AccountCreation(props: {
         </FormGroup>
       </StyledForm>
       <LargeButton
-        children={"Submit"}
         onClick={async () => {
           if (username === "") {
             return setErrorMessage("Username cannot be empty");
@@ -67,8 +66,10 @@ export function AccountCreation(props: {
           console.log("create account");
           onSubmitSuccess();
         }}
-      ></LargeButton>
-      <LargeButton children={"Go back"} onClick={onGoBackClick}></LargeButton>
+      >
+        Submit
+      </LargeButton>
+      <LargeButton onClick={onGoBackClick}>Go back</LargeButton>
     </Wrapper>
   );
 }
