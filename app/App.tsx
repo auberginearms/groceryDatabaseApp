@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Login } from "./Login";
 import { styled } from "styled-components";
-import { Welcome } from "./Welcome";
+import { TabNavigation } from "./TabNavigation";
 import { AccountCreation } from "./AccountCreation";
 
 enum PageDisplay {
@@ -25,7 +25,7 @@ function App(): ReactElement {
         />
       )}
       {displayPage === PageDisplay.Welcome && (
-        <Welcome
+        <TabNavigation
           onLogout={() => {
             setdisplayPage(PageDisplay.Login);
           }}
@@ -50,6 +50,4 @@ export default App;
 const AppStyling = styled.div`
   display: flex;
   flex: 1;
-  height: 100%;
-  justify-content: centre;
 `;
