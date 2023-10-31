@@ -31,7 +31,7 @@ export function AccountCreation(props: {
             type="text"
             placeholder="enter your username"
             value={username}
-            onChange={(e:any) => {
+            onChange={(e) => {
               const newUsername = e.target.value;
               setUsername(newUsername);
             }}
@@ -45,7 +45,7 @@ export function AccountCreation(props: {
             type="password"
             placeholder="enter your password"
             value={password}
-            onChange={(e:any) => {
+            onChange={(e) => {
               const newPassword = e.target.value;
               setPassword(newPassword);
             }}
@@ -67,7 +67,6 @@ export function AccountCreation(props: {
           console.log("create account");
           createNewAccount(username, password);
           onSubmitSuccess();
-        
         }}
       >
         Submit
