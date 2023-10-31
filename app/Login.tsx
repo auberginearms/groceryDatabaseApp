@@ -15,7 +15,6 @@ export function Login(props: {
 }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [displayAccountCreatedmessage, setdisplayAccountCreatedmessage] = useState(false);
   const { onLoginSuccess, onAccountCreationClick ,onAccountCreationSuccess} = props;
   const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
