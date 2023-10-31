@@ -12,7 +12,7 @@ enum PageDisplay {
 
 function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
-  const [displayAccountCreatedMessage, setDisplayAccountCreatedMessage] = useState(false);
+  const [accountSuccessfullyCreated, setDisplayAccountCreatedMessage] = useState(false);
   return (
     <AppStyling>
       {displayPage === PageDisplay.Login && (
@@ -25,7 +25,7 @@ function App(): ReactElement {
             setdisplayPage(PageDisplay.AccountCreation);
             setDisplayAccountCreatedMessage(false)
           }}
-onAccountCreationSuccess={displayAccountCreatedMessage===true?"Account created":null}
+messageDisplayedOnLoginPage={accountSuccessfullyCreated?"Account created":null}
         />
       )}
       {displayPage === PageDisplay.Welcome && (

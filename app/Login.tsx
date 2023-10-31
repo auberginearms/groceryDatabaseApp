@@ -11,11 +11,11 @@ import { LargeButton } from "./ui/LargeButton";
 export function Login(props: {
   onLoginSuccess: () => void;
   onAccountCreationClick: () => void;
-  onAccountCreationSuccess:string|null
+  messageDisplayedOnLoginPage:string|null
 }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLoginSuccess, onAccountCreationClick ,onAccountCreationSuccess} = props;
+  const { onLoginSuccess, onAccountCreationClick ,messageDisplayedOnLoginPage: onAccountCreationSuccess} = props;
   const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
     <Wrapper>
