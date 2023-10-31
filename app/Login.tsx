@@ -11,14 +11,17 @@ import { LargeButton } from "./ui/LargeButton";
 export function Login(props: {
   onLoginSuccess: () => void;
   onAccountCreationClick: () => void;
+  onAccountCreationSuccess:string|null
 }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLoginSuccess, onAccountCreationClick } = props;
+  const [displayAccountCreatedmessage, setdisplayAccountCreatedmessage] = useState(false);
+  const { onLoginSuccess, onAccountCreationClick ,onAccountCreationSuccess} = props;
   const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
   return (
     <Wrapper>
       {displayInvalidMessage ? "Invalid login details" : null}
+      {onAccountCreationSuccess}
 
       <StyledForm>
         <PageHeader>Let&apos;s find some deals</PageHeader>
@@ -29,7 +32,7 @@ export function Login(props: {
             type="text"
             placeholder="enter your username"
             value={username}
-            onChange={(e) => {
+            onChange={(e:any) => {
               const newUsername = e.target.value;
               setUsername(newUsername);
             }}
@@ -43,7 +46,7 @@ export function Login(props: {
             type="password"
             placeholder="enter your password"
             value={password}
-            onChange={(e) => {
+            onChange={(e:any) => {
               const newPassword = e.target.value;
               setPassword(newPassword);
             }}
