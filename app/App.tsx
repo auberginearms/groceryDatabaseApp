@@ -1,43 +1,28 @@
 import { ReactElement, useState } from "react";
-import { Login } from "./Login";
+import { Authentication } from "./Authentication";
 import { styled } from "styled-components";
 import { TabNavigation } from "./TabNavigation";
-import { AccountCreation } from "./AccountCreation";
 
 enum PageDisplay {
-  Login,
-  Welcome,
-  AccountCreation,
+  Authentication,
+  TabNavigation,
 }
 
 function App(): ReactElement {
-  const [displayPage, setdisplayPage] = useState(PageDisplay.Login);
+  const [displayPage, setdisplayPage] = useState(PageDisplay.Authentication);
   return (
     <AppStyling>
-      {displayPage === PageDisplay.Login && (
-        <Login
+      {displayPage === PageDisplay.Authentication && (
+        <Authentication
           onLoginSuccess={() => {
-            setdisplayPage(PageDisplay.Welcome);
-          }}
-          onAccountCreationClick={() => {
-            setdisplayPage(PageDisplay.AccountCreation);
+            setdisplayPage(PageDisplay.TabNavigation);
           }}
         />
       )}
-      {displayPage === PageDisplay.Welcome && (
+      {displayPage === PageDisplay.TabNavigation && (
         <TabNavigation
           onLogout={() => {
-            setdisplayPage(PageDisplay.Login);
-          }}
-        />
-      )}
-      {displayPage === PageDisplay.AccountCreation && (
-        <AccountCreation
-          onGoBackClick={() => {
-            setdisplayPage(PageDisplay.Login);
-          }}
-          onSubmitSuccess={() => {
-            setdisplayPage(PageDisplay.Login);
+            setdisplayPage(PageDisplay.Authentication);
           }}
         />
       )}

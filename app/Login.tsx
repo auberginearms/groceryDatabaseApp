@@ -11,15 +11,21 @@ import { LargeButton } from "./ui/LargeButton";
 export function Login(props: {
   onLoginSuccess: () => void;
   onAccountCreationClick: () => void;
+  displayAccountCreatedMessage: string | null;
 }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const { onLoginSuccess, onAccountCreationClick } = props;
+  const {
+    onLoginSuccess,
+    onAccountCreationClick,
+    displayAccountCreatedMessage,
+  } = props;
   const [displayInvalidMessage, setDisplayInvalidMessage] = useState(false);
+
   return (
     <Wrapper>
       {displayInvalidMessage ? "Invalid login details" : null}
-
+      {displayAccountCreatedMessage}
       <StyledForm>
         <PageHeader>Let&apos;s find some deals</PageHeader>
 
