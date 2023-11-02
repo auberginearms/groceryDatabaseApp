@@ -2,19 +2,17 @@ import { ReactElement, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
-import { Location } from "./Location";
+import { Locations } from "./Locations";
 
 enum TabDisplay {
   Deals,
   Location,
 }
 
-export function TabNavigation(props: { onLogout: () => void }): ReactElement {
-  const { onLogout } = props;
+export function TabNavigation(): ReactElement {
   const [displayTab, setdisplayTab] = useState(TabDisplay.Deals);
 
   return (
-    <Wrapper>
       <div style={{ flexDirection: "row" }}>
         <Button
           style={{
@@ -46,11 +44,11 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
             setdisplayTab(TabDisplay.Location);
           }}
         >
-          Location
+          Locations
         </Button>
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
-      {displayTab === TabDisplay.Location && <Location />}
+      {displayTab === TabDisplay.Location && <Locations />}
     </Wrapper>
   );
 }
