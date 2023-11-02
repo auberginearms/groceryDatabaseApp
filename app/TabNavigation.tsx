@@ -13,6 +13,7 @@ export function TabNavigation(): ReactElement {
   const [displayTab, setdisplayTab] = useState(TabDisplay.Deals);
 
   return (
+    <Wrapper>
       <div style={{ flexDirection: "row" }}>
         <Button
           style={{
