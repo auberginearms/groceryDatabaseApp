@@ -22,9 +22,9 @@ const locations: Location[] = [
 ];
 
 export function ViewLocations(): ReactElement {
-  const rowSeed = locations.map((location) => {
+  const rowSeed = locations.map((location, index) => {
     return (
-      <div style={{ display: "flex" }}>
+      <div key={location.displayName} style={{ display: "flex" }}>
         <Cell style={{ color: "black" }}>{location.displayName}</Cell>
         <Cell style={{ color: "#535353" }}>{location.suburb}</Cell>
       </div>
