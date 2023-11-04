@@ -15,6 +15,7 @@ export function LargeButton(props: {
         backgroundColor: "#b5a8a8",
         borderRadius: 12,
         fontSize: 12,
+        border: "none",
       }}
       onClick={() => {
         onClick();
