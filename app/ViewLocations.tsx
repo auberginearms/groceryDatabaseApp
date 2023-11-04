@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
+import { Location } from "./types";
 
-const locations = [
+const locations: Location[] = [
   {
     displayName: "TANG",
     fullName: "TANG - The Asian Food Emporium",

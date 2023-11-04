@@ -6,7 +6,7 @@ import { Locations } from "./Locations";
 
 enum TabDisplay {
   Deals,
-  Location,
+  Locations,
 }
 
 export function TabNavigation(): ReactElement {
@@ -39,17 +39,17 @@ export function TabNavigation(): ReactElement {
             borderRadius: 12,
             fontSize: 12,
             backgroundColor:
-              displayTab === TabDisplay.Location ? "#E86868" : "#B5A8A8",
+              displayTab === TabDisplay.Locations ? "#E86868" : "#B5A8A8",
           }}
           onClick={() => {
-            setdisplayTab(TabDisplay.Location);
+            setdisplayTab(TabDisplay.Locations);
           }}
         >
           Locations
         </Button>
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
-      {displayTab === TabDisplay.Location && <Locations />}
+      {displayTab === TabDisplay.Locations && <Locations />}
     </Wrapper>
   );
 }
