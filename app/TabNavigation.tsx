@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
 import { Locations } from "./Locations";
+import { redActiveButton, greyInactiveButton } from "./ui/colourLibrary";
 
 enum TabDisplay {
   Deals,
@@ -39,7 +40,9 @@ export function TabNavigation(): ReactElement {
             borderRadius: 12,
             fontSize: 12,
             backgroundColor:
-              displayTab === TabDisplay.Locations ? "#E86868" : "#B5A8A8",
+              displayTab === TabDisplay.Locations
+                ? redActiveButton
+                : greyInactiveButton,
           }}
           onClick={() => {
             setdisplayTab(TabDisplay.Locations);

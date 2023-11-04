@@ -2,6 +2,7 @@ import { ReactElement } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
 import { Location } from "./types";
+import { darkGrey, black } from "./ui/colourLibrary";
 
 const locations: Location[] = [
   {
@@ -36,8 +37,8 @@ export function ViewLocations(): ReactElement {
           alignItems: "center",
         }}
       >
-        <Cell style={{ color: "black" }}>{location.displayName}</Cell>
-        <Cell style={{ color: "#535353" }}>{location.suburb}</Cell>
+        <Cell style={{ color: black }}>{location.displayName}</Cell>
+        <Cell style={{ color: darkGrey }}>{location.suburb}</Cell>
       </div>
     );
   });
