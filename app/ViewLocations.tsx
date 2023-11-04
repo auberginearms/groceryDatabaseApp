@@ -22,7 +22,7 @@ const locations: Location[] = [
 ];
 
 export function ViewLocations(): ReactElement {
-  const rowSeed = locations.map((location, index) => {
+  const rows = locations.map((location) => {
     return (
       <div
         key={location.displayName}
@@ -41,7 +41,7 @@ export function ViewLocations(): ReactElement {
       </div>
     );
   });
-  return <Wrapper>{rowSeed}</Wrapper>;
+  return <Wrapper>{rows}</Wrapper>;
 }
 
 const Cell = styled.div`
