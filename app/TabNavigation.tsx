@@ -24,7 +24,7 @@ export function TabNavigation(): ReactElement {
             borderRadius: 12,
             fontSize: 12,
             backgroundColor:
-              displayTab === TabDisplay.Deals ? "#E86868" : "#B5A8A8",
+              displayTab === TabDisplay.Deals ? redActiveButton : greyInactiveButton,
           }}
           onClick={() => {
             setdisplayTab(TabDisplay.Deals);

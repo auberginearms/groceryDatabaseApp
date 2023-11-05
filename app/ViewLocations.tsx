@@ -42,7 +42,7 @@ export function ViewLocations(): ReactElement {
       </div>
     );
   });
-  return <Wrapper>{rows}</Wrapper>;
+  return <Wrapper>{rows}</Wrapper>
 }
 
 const Cell = styled.div`
