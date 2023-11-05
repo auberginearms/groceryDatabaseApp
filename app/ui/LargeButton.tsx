@@ -1,18 +1,23 @@
 import { ReactElement, ReactNode } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
+import { greyButtonBackground } from "./colourLibrary";
 
 export function LargeButton(props: {
   onClick: () => void;
   children: ReactNode;
+  backgroundColor?: string;
 }): ReactElement {
-  const { onClick, children } = props;
+  const { onClick, children, backgroundColor } = props;
   return (
     <Button
       style={{
         height: 32,
         margin: 10,
-        backgroundColor: "#b5a8a8",
+        backgroundColor:
+          backgroundColor !== undefined
+            ? backgroundColor
+            : greyButtonBackground,
         borderRadius: 12,
         fontSize: 12,
         border: "none",
