@@ -19,13 +19,7 @@ function App(): ReactElement {
           }}
         />
       )}
-      {displayPage === PageDisplay.TabNavigation && (
-        <TabNavigation
-          onLogout={() => {
-            setdisplayPage(PageDisplay.Authentication);
-          }}
-        />
-      )}
+      {displayPage === PageDisplay.TabNavigation && <TabNavigation />}
     </AppStyling>
   );
 }

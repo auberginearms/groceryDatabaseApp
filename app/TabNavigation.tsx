@@ -2,15 +2,15 @@ import { ReactElement, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
-import { Location } from "./Location";
+import { Locations } from "./Locations";
+import { redActiveButton, greyInactiveButton } from "./ui/colourLibrary";
 
 enum TabDisplay {
   Deals,
-  Location,
+  Locations,
 }
 
-export function TabNavigation(props: { onLogout: () => void }): ReactElement {
-  const { onLogout } = props;
+export function TabNavigation(): ReactElement {
   const [displayTab, setdisplayTab] = useState(TabDisplay.Deals);
 
   return (
@@ -40,17 +40,19 @@ export function TabNavigation(props: { onLogout: () => void }): ReactElement {
             borderRadius: 12,
             fontSize: 12,
             backgroundColor:
-              displayTab === TabDisplay.Location ? "#E86868" : "#B5A8A8",
+              displayTab === TabDisplay.Locations
+                ? redActiveButton
+                : greyInactiveButton,
           }}
           onClick={() => {
-            setdisplayTab(TabDisplay.Location);
+            setdisplayTab(TabDisplay.Locations);
           }}
         >
-          Location
+          Locations
         </Button>
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
-      {displayTab === TabDisplay.Location && <Location />}
+      {displayTab === TabDisplay.Locations && <Locations />}
     </Wrapper>
   );
 }

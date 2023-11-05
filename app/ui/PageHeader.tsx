@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const PageHeader = styled.div`
-  color: #fff;
+  color: white;
   font-size: 20px;
   margin-bottom: 50px;
 `;
