@@ -16,35 +16,9 @@ export function Locations(): ReactElement {
   const [locationPage, setLocationPage] = useState(LocationPage.View);
 
   return (
-    <Wrapper>{locationPage === LocationPage.View && <ViewLocations />}
-    {locationPage === LocationPage.Create && <CreateLocations/>}
-    <div>
-{locationPage===LocationPage.Create?<Button
- style={{
-  height: 32,
-  width: 150,
-  margin: 10,
-  borderRadius: 12,
-  fontSize: 12,
-backgroundColor:greyInactiveButton}}
-      onClick={()=>{setLocationPage(LocationPage.View)}}>
-  Cancel
-</Button>:null      }
-<Button 
-                style={{
-                  height: 32,
-                  width: 150,
-                  margin: 10,
-                  borderRadius: 12,
-                  fontSize: 12,
-                  backgroundColor:
-                    locationPage === LocationPage.Create ? greenActiveButton: greyInactiveButton,
-                }}
-      
-      onClick={()=>{setLocationPage(LocationPage.Create)}}>
-  Create
-</Button>
-</div>
+    <Wrapper>{locationPage === LocationPage.View && <ViewLocations onCreateClick={()=>{setLocationPage(LocationPage.Create)}} />}
+    {locationPage === LocationPage.Create && <CreateLocations 
+   onCancelClick={()=>{setLocationPage(LocationPage.View)}} onCreateLocationClick={()=>{setLocationPage(LocationPage.View)}}/>}
 </Wrapper>
   );
 }
