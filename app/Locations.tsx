@@ -9,16 +9,31 @@ import { greenActiveButton, greyInactiveButton } from "./ui/colourLibrary";
 
 enum LocationPage {
   View,
-  Create
+  Create,
 }
 
 export function Locations(): ReactElement {
   const [locationPage, setLocationPage] = useState(LocationPage.View);
 
   return (
-    <Wrapper>{locationPage === LocationPage.View && <ViewLocations onCreateClick={()=>{setLocationPage(LocationPage.Create)}} />}
-    {locationPage === LocationPage.Create && <CreateLocations 
-   onCancelClick={()=>{setLocationPage(LocationPage.View)}} onCreateLocationClick={()=>{setLocationPage(LocationPage.View)}}/>}
-</Wrapper>
+    <Wrapper>
+      {locationPage === LocationPage.View && (
+        <ViewLocations
+          onCreateClick={() => {
+            setLocationPage(LocationPage.Create);
+          }}
+        />
+      )}
+      {locationPage === LocationPage.Create && (
+        <CreateLocations
+          onCancelClick={() => {
+            setLocationPage(LocationPage.View);
+          }}
+          onCreateLocationClick={() => {
+            setLocationPage(LocationPage.View);
+          }}
+        />
+      )}
+    </Wrapper>
   );
 }

@@ -2,8 +2,14 @@ import { ReactElement } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
 import { Location } from "./types";
-import { darkGrey, black, greenActiveButton, greyInactiveButton } from "./ui/colourLibrary";
+import {
+  darkGrey,
+  black,
+  greenActiveButton,
+  greyInactiveButton,
+} from "./ui/colourLibrary";
 import { Button } from "react-bootstrap";
+import { LargeButton } from "./ui/LargeButton";
 
 const locations: Location[] = [
   {
@@ -23,8 +29,10 @@ const locations: Location[] = [
   },
 ];
 
-export function ViewLocations(props:{onCreateClick:()=>void}): ReactElement {
-  const {onCreateClick} = props
+export function ViewLocations(props: {
+  onCreateClick: () => void;
+}): ReactElement {
+  const { onCreateClick } = props;
   const rows = locations.map((location) => {
     return (
       <div
@@ -44,21 +52,19 @@ export function ViewLocations(props:{onCreateClick:()=>void}): ReactElement {
       </div>
     );
   });
-  return <Wrapper>{rows}
-  <Button
-  onClick={()=>{onCreateClick()}} 
-                style={{
-                  height: 32,
-                  width: 150,
-                  margin: 10,
-                  borderRadius: 12,
-                  fontSize: 12,
-                  backgroundColor:greyInactiveButton
-                }}>
-      
-  Create
-</Button>
-</Wrapper>
+  return (
+    <Wrapper>
+      {rows}
+      <LargeButton
+        onClick={() => {
+          onCreateClick();
+        }}
+        backgroundColor={greyInactiveButton}
+      >
+        Create
+      </LargeButton>
+    </Wrapper>
+  );
 }
 
 const Cell = styled.div`

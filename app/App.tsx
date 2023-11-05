@@ -12,15 +12,14 @@ function App(): ReactElement {
   const [displayPage, setdisplayPage] = useState(PageDisplay.Authentication);
   return (
     <AppStyling>
-      <TabNavigation/>
-      {/* {displayPage === PageDisplay.Authentication && (
+      {displayPage === PageDisplay.Authentication && (
         <Authentication
           onLoginSuccess={() => {
             setdisplayPage(PageDisplay.TabNavigation);
           }}
         />
       )}
-      {displayPage === PageDisplay.TabNavigation && <TabNavigation />} */}
+      {displayPage === PageDisplay.TabNavigation && <TabNavigation />}
     </AppStyling>
   );
 }
