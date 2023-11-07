@@ -1,4 +1,4 @@
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
 import { Location } from "./types";
@@ -10,30 +10,22 @@ import {
 } from "./ui/colourLibrary";
 import { Button } from "react-bootstrap";
 import { LargeButton } from "./ui/LargeButton";
-
-const locations: Location[] = [
-  {
-    displayName: "TANG",
-    fullName: "TANG - The Asian Food Emporium",
-    suburb: "Melbourne",
-  },
-  {
-    displayName: "Minh Phat",
-    fullName: "Minh Phat Asian Grocer",
-    suburb: "Richmond",
-  },
-  {
-    displayName: "Aldi",
-    fullName: "ALDI",
-    suburb: "Richmond",
-  },
-];
+import { getStores } from "@/server/getStores";
 
 export function ViewLocations(props: {
   onCreateClick: () => void;
 }): ReactElement {
   const { onCreateClick } = props;
-  const rows = locations.map((location) => {
+  const [locations, setLocations] = useState<Location[]>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await getStores();
+      setLocations(result);
+    };
+    fetchData();
+  }, []);
+
+  const displayedStores = locations.map((location) => {
     return (
       <div
         key={location.displayName}
@@ -54,7 +46,7 @@ export function ViewLocations(props: {
   });
   return (
     <Wrapper>
-      {rows}
+      {displayedStores}
       <LargeButton
         onClick={() => {
           onCreateClick();
