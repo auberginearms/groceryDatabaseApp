@@ -31,10 +31,7 @@ export function CreateLocations(props: {
               type="text"
               placeholder="enter display name of store"
               value={displayName}
-              onChange={(e) => {
-                const newDisplayName = e.target.value;
-                setdisplayName(newDisplayName);
-              }}
+              onChange={setdisplayName}
             />
           </FormGroup>
 
@@ -45,10 +42,7 @@ export function CreateLocations(props: {
               type="text"
               placeholder="enter full name of store"
               value={fullName}
-              onChange={(e) => {
-                const newFullName = e.target.value;
-                setFullName(newFullName);
-              }}
+              onChange={setFullName}
             />
           </FormGroup>
           <FormGroup>
@@ -58,10 +52,7 @@ export function CreateLocations(props: {
               type="text"
               placeholder="enter suburb"
               value={suburb}
-              onChange={(e) => {
-                const newSuburb = e.target.value;
-                setSuburb(newSuburb);
-              }}
+              onChange={setSuburb}
             />
           </FormGroup>
         </StyledForm>
@@ -92,8 +83,6 @@ export function CreateLocations(props: {
             //   return setErrorMessage("Store already exists");
             // }
             onCreateLocationClick();
-
-            console.log("dummy location creation");
           }}
           backgroundColor={greenActiveButton}
         >

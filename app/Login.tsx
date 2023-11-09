@@ -35,10 +35,7 @@ export function Login(props: {
             type="text"
             placeholder="enter your username"
             value={username}
-            onChange={(e) => {
-              const newUsername = e.target.value;
-              setUsername(newUsername);
-            }}
+            onChange={setUsername}
           />
         </FormGroup>
 
@@ -49,10 +46,7 @@ export function Login(props: {
             type="password"
             placeholder="enter your password"
             value={password}
-            onChange={(e) => {
-              const newPassword = e.target.value;
-              setPassword(newPassword);
-            }}
+            onChange={setPassword}
           />
         </FormGroup>
       </StyledForm>
