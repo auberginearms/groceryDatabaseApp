@@ -19,3 +19,10 @@ model User {
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   @@map(name: "users")
 }
+
+model Store {
+  id            String       @default(cuid()) @id @unique
+  displayName   String    @unique
+  fullName      String      
+  suburb        String   
+  }
