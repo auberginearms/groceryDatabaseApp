@@ -30,10 +30,7 @@ export function AccountCreation(props: {
             type="text"
             placeholder="enter your username"
             value={username}
-            onChange={(e) => {
-              const newUsername = e.target.value;
-              setUsername(newUsername);
-            }}
+            onChange={setUsername}
           />
         </FormGroup>
 
@@ -44,10 +41,7 @@ export function AccountCreation(props: {
             type="password"
             placeholder="enter your password"
             value={password}
-            onChange={(e) => {
-              const newPassword = e.target.value;
-              setPassword(newPassword);
-            }}
+            onChange={setPassword}
           />
         </FormGroup>
       </StyledForm>
@@ -63,7 +57,6 @@ export function AccountCreation(props: {
             return setErrorMessage("Username already exists");
           }
           setErrorMessage("");
-          console.log("create account");
           createNewAccount(username, password);
           onSubmitSuccess();
         }}
