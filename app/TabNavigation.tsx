@@ -16,8 +16,16 @@ export function TabNavigation(): ReactElement {
 
   return (
     <Wrapper>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: "black",
+          alignSelf: "stretch",
+          justifyContent: "center",
+        }}
+      >
         <LargeButton
+          width="150px"
           backgroundColor={
             displayTab === TabDisplay.Deals
               ? redActiveButton
@@ -30,6 +38,7 @@ export function TabNavigation(): ReactElement {
           Deals
         </LargeButton>
         <LargeButton
+          width="150px"
           backgroundColor={
             displayTab === TabDisplay.Locations
               ? redActiveButton
