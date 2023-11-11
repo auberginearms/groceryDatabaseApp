@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
 import { Locations } from "./Locations";
-import { redActiveButton, greyInactiveButton } from "./ui/colourLibrary";
+import { redActiveButton, greyInactiveButton, black } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 
 enum TabDisplay {
@@ -19,7 +19,7 @@ export function TabNavigation(): ReactElement {
       <div
         style={{
           display: "flex",
-          backgroundColor: "black",
+          backgroundColor: black,
           alignSelf: "stretch",
           justifyContent: "center",
         }}
