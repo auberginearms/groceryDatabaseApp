@@ -22,7 +22,7 @@ export function LargeButton(props: {
         borderRadius: 12,
         fontSize: 12,
         border: "none",
-        width: width !== undefined ? width : "auto",
+        width: width,
       }}
       onClick={() => {
         onClick();
