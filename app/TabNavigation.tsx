@@ -25,7 +25,7 @@ export function TabNavigation(): ReactElement {
         }}
       >
         <LargeButton
-          width="150px"
+          width={150}
           backgroundColor={
             displayTab === TabDisplay.Deals
               ? redActiveButton
@@ -38,7 +38,7 @@ export function TabNavigation(): ReactElement {
           Deals
         </LargeButton>
         <LargeButton
-          width="150px"
+          width={150}
           backgroundColor={
             displayTab === TabDisplay.Locations
               ? redActiveButton
