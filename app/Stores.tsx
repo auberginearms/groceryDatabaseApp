@@ -41,7 +41,7 @@ export function Stores(): ReactElement {
           onBackClick={() => {
             setStoresPage(StoresPage.View);
           }}
-          onUpdateStoreClick={() => {
+          onUpdateStoreSuccess={() => {
             setStoresPage(StoresPage.View);
           }}
         />

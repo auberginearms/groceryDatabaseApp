@@ -9,25 +9,19 @@ import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 
 export function UpdateStores(props: {
-  onUpdateStoreClick: () => void;
+  onUpdateStoreSuccess: () => void;
   onBackClick: () => void;
   //   prefilledDisplayName: string;
   //   prefilledFullName: string;
   //   prefilledSuburb: string;
 }): ReactElement {
-  const [
-    errorMessage,
-    setErrorMessage,
-    // prefilledDisplayName,
-    // prefilledFullName,
-    // prefilledSuburb,
-  ] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [displayName, setdisplayName] = useState("");
   const [fullName, setFullName] = useState("");
   const [suburb, setSuburb] = useState("");
 
-  const { onUpdateStoreClick, onBackClick } = props;
+  const { onUpdateStoreSuccess: onUpdateStoreClick, onBackClick } = props;
   return (
     <Wrapper>
       <PageHeader> STORE NAME</PageHeader>
