@@ -23,9 +23,7 @@ export function ViewStores(props: {
   const displayedStores = stores.map((store) => {
     return (
       <div
-        onClick={() => {
-          onStoreClick();
-        }}
+        onClick={onStoreClick}
         key={store.displayName}
         style={{
           display: "flex",
