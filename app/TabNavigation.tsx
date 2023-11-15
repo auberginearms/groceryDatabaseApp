@@ -1,8 +1,8 @@
 import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
+import { redActiveButton, greyInactiveButton, black } from "./ui/colourLibrary";
 import { Stores } from "./Stores";
-import { redActiveButton, greyInactiveButton } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 
 enum TabDisplay {
@@ -15,8 +15,16 @@ export function TabNavigation(): ReactElement {
 
   return (
     <Wrapper>
-      <div style={{ display: "flex" }}>
+      <div
+        style={{
+          display: "flex",
+          backgroundColor: black,
+          alignSelf: "stretch",
+          justifyContent: "center",
+        }}
+      >
         <LargeButton
+          width={150}
           backgroundColor={
             displayTab === TabDisplay.Deals
               ? redActiveButton
@@ -29,6 +37,7 @@ export function TabNavigation(): ReactElement {
           Deals
         </LargeButton>
         <LargeButton
+          width={150}
           backgroundColor={
             displayTab === TabDisplay.Locations
               ? redActiveButton

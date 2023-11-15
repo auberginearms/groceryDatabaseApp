@@ -7,8 +7,9 @@ export function LargeButton(props: {
   onClick: () => void;
   children: ReactNode;
   backgroundColor?: string;
+  width?: number;
 }): ReactElement {
-  const { onClick, children, backgroundColor } = props;
+  const { onClick, children, backgroundColor, width } = props;
   return (
     <Button
       style={{
@@ -21,6 +22,7 @@ export function LargeButton(props: {
         borderRadius: 12,
         fontSize: 12,
         border: "none",
+        width,
       }}
       onClick={() => {
         onClick();
