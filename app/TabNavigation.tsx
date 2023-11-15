@@ -1,9 +1,8 @@
 import { ReactElement, useState } from "react";
-import { Button } from "react-bootstrap";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
-import { Locations } from "./Locations";
 import { redActiveButton, greyInactiveButton, black } from "./ui/colourLibrary";
+import { Stores } from "./Stores";
 import { LargeButton } from "./ui/LargeButton";
 
 enum TabDisplay {
@@ -52,7 +51,7 @@ export function TabNavigation(): ReactElement {
         </LargeButton>
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
-      {displayTab === TabDisplay.Locations && <Locations />}
+      {displayTab === TabDisplay.Locations && <Stores />}
     </Wrapper>
   );
 }

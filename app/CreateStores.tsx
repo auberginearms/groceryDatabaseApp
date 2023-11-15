@@ -1,6 +1,5 @@
 import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
-import { Button } from "react-bootstrap";
 import { greenActiveButton, greyInactiveButton } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 import { StyledForm } from "./ui/StyledForm";
@@ -8,9 +7,12 @@ import { PageHeader } from "./ui/PageHeader";
 import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
+import { createNewStore } from "@/server/createNewStore";
+import { displayNameAndSuburbAlreadyExist } from "@/server/displayNameAndSuburbAlreadyExists";
+import { fullNameAndSuburbAlreadyExist } from "@/server/fullNameAndSuburbAlreadyExist";
 
-export function CreateLocations(props: {
-  onCreateLocationClick: () => void;
+export function CreateStore(props: {
+  onCreateStoreClick: () => void;
   onCancelClick: () => void;
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
@@ -19,7 +21,8 @@ export function CreateLocations(props: {
   const [fullName, setFullName] = useState("");
   const [suburb, setSuburb] = useState("");
 
-  const { onCreateLocationClick, onCancelClick } = props;
+  const { onCreateStoreClick, onCancelClick } = props;
+
   return (
     <Wrapper>
       <PageHeader> Create Location</PageHeader>
@@ -69,7 +72,7 @@ export function CreateLocations(props: {
           Cancel
         </LargeButton>
         <LargeButton
-          onClick={() => {
+          onClick={async () => {
             if (displayName === "") {
               return setErrorMessage("Display name cannot be empty");
             }
@@ -79,10 +82,19 @@ export function CreateLocations(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
-            // if (await storeAlreadyExists(displayName,fullName,suburb)) {
-            //   return setErrorMessage("Store already exists");
-            // }
-            onCreateLocationClick();
+            if (await displayNameAndSuburbAlreadyExist(displayName, suburb)) {
+              return setErrorMessage(
+                "Display name and suburb combination already exists"
+              );
+            }
+            if (await fullNameAndSuburbAlreadyExist(fullName, suburb)) {
+              return setErrorMessage(
+                "Full name and suburb combination already exists"
+              );
+            }
+            setErrorMessage("");
+            onCreateStoreClick();
+            createNewStore(displayName, fullName, suburb);
           }}
           backgroundColor={greenActiveButton}
         >

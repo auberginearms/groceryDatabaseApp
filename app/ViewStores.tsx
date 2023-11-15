@@ -2,33 +2,25 @@ import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
 import { Location } from "./types";
-import {
-  darkGrey,
-  black,
-  greenActiveButton,
-  greyInactiveButton,
-} from "./ui/colourLibrary";
-import { Button } from "react-bootstrap";
+import { darkGrey, black, greyInactiveButton } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 import { getStores } from "@/server/getStores";
 
-export function ViewLocations(props: {
-  onCreateClick: () => void;
-}): ReactElement {
+export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
-  const [locations, setLocations] = useState<Location[]>([]);
+  const [stores, setStores] = useState<Location[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
-      setLocations(result);
+      setStores(result);
     };
     fetchData();
   }, []);
 
-  const displayedStores = locations.map((location) => {
+  const displayedStores = stores.map((store) => {
     return (
       <div
-        key={location.displayName}
+        key={store.displayName}
         style={{
           display: "flex",
           backgroundColor: "#00c2ff",
@@ -39,8 +31,8 @@ export function ViewLocations(props: {
           alignItems: "center",
         }}
       >
-        <Cell style={{ color: black }}>{location.displayName}</Cell>
-        <Cell style={{ color: darkGrey }}>{location.suburb}</Cell>
+        <Cell style={{ color: black }}>{store.displayName}</Cell>
+        <Cell style={{ color: darkGrey }}>{store.suburb}</Cell>
       </div>
     );
   });
