@@ -3,7 +3,7 @@ import { PageHeader } from "./ui/PageHeader";
 import { Wrapper } from "./ui/Wrapper";
 import { ViewStores } from "./ViewStores";
 import { CreateStore } from "./CreateStores";
-import { UpdateStores } from "./UpdateStores";
+import { UpdateStore } from "./UpdateStores";
 
 enum StoresPage {
   View,
@@ -37,7 +37,7 @@ export function Stores(): ReactElement {
         />
       )}
       {storesPage === StoresPage.Update && (
-        <UpdateStores
+        <UpdateStore
           onBackClick={() => {
             setStoresPage(StoresPage.View);
           }}

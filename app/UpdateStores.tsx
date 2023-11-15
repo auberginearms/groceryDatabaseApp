@@ -8,7 +8,7 @@ import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 
-export function UpdateStores(props: {
+export function UpdateStore(props: {
   onUpdateStoreSuccess: () => void;
   onBackClick: () => void;
   //   prefilledDisplayName: string;
