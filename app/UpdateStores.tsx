@@ -61,7 +61,7 @@ export function UpdateStores(props: {
       </div>
       {errorMessage}
 
-      <div style={{ display: "flex" }}>
+      <div>
         <LargeButton
           onClick={() => {
             onBackClick();
