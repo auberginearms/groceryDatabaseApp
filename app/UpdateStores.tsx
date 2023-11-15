@@ -62,12 +62,7 @@ export function UpdateStores(props: {
       {errorMessage}
 
       <div>
-        <LargeButton
-          onClick={() => {
-            onBackClick();
-          }}
-          backgroundColor={greyInactiveButton}
-        >
+        <LargeButton onClick={onBackClick} backgroundColor={greyInactiveButton}>
           Cancel
         </LargeButton>
         <LargeButton
