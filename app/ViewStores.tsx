@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
-import { Location } from "./types";
+import { Store } from "./types";
 import { darkGrey, black, greyInactiveButton } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 import { getStores } from "@/server/getStores";
@@ -11,7 +11,7 @@ export function ViewStores(props: {
   onStoreClick: () => void;
 }): ReactElement {
   const { onCreateClick, onStoreClick } = props;
-  const [stores, setStores] = useState<Location[]>([]);
+  const [stores, setStores] = useState<Store[]>([]);
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
