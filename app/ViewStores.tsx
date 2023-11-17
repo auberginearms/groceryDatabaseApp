@@ -6,8 +6,11 @@ import { darkGrey, black, greyInactiveButton } from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 import { getStores } from "@/server/getStores";
 
-export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
-  const { onCreateClick } = props;
+export function ViewStores(props: {
+  onCreateClick: () => void;
+  onStoreClick: () => void;
+}): ReactElement {
+  const { onCreateClick, onStoreClick } = props;
   const [stores, setStores] = useState<Location[]>([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -20,6 +23,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const displayedStores = stores.map((store) => {
     return (
       <div
+        onClick={onStoreClick}
         key={store.displayName}
         style={{
           display: "flex",

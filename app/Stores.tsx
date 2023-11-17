@@ -3,13 +3,12 @@ import { PageHeader } from "./ui/PageHeader";
 import { Wrapper } from "./ui/Wrapper";
 import { ViewStores } from "./ViewStores";
 import { CreateStore } from "./CreateStores";
-import { LargeButton } from "./ui/LargeButton";
-import { Button } from "react-bootstrap";
-import { greenActiveButton, greyInactiveButton } from "./ui/colourLibrary";
+import { UpdateStore } from "./UpdateStores";
 
 enum StoresPage {
   View,
   Create,
+  Update,
 }
 
 export function Stores(): ReactElement {
@@ -19,6 +18,9 @@ export function Stores(): ReactElement {
     <Wrapper>
       {storesPage === StoresPage.View && (
         <ViewStores
+          onStoreClick={() => {
+            setStoresPage(StoresPage.Update);
+          }}
           onCreateClick={() => {
             setStoresPage(StoresPage.Create);
           }}
@@ -30,6 +32,16 @@ export function Stores(): ReactElement {
             setStoresPage(StoresPage.View);
           }}
           onCreateStoreClick={() => {
+            setStoresPage(StoresPage.View);
+          }}
+        />
+      )}
+      {storesPage === StoresPage.Update && (
+        <UpdateStore
+          onBackClick={() => {
+            setStoresPage(StoresPage.View);
+          }}
+          onUpdateStoreSuccess={() => {
             setStoresPage(StoresPage.View);
           }}
         />
