@@ -25,6 +25,22 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
     };
     fetchData();
   }, []);
+
+  if (storeBeingUpdated !== undefined) {
+    return (
+      <Wrapper>
+        <UpdateStore
+          onBackClick={() => {
+            setStoreBeingUpdated(undefined);
+          }}
+          onUpdateStoreSuccess={() => {
+            setStoreBeingUpdated(undefined);
+          }}
+          store={storeBeingUpdated}
+        ></UpdateStore>
+      </Wrapper>
+    );
+  }
   const displayedStores = storeList.map((store) => {
     return (
       <div
@@ -47,21 +63,6 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
       </div>
     );
   });
-  if (storeBeingUpdated !== undefined) {
-    return (
-      <Wrapper>
-        <UpdateStore
-          onBackClick={() => {
-            setStoreBeingUpdated(undefined);
-          }}
-          onUpdateStoreSuccess={() => {
-            setStoreBeingUpdated(undefined);
-          }}
-          store={storeBeingUpdated}
-        ></UpdateStore>
-      </Wrapper>
-    );
-  }
   return (
     <Wrapper>
       {displayedStores}
