@@ -12,10 +12,10 @@ import { Store } from "./types";
 export function UpdateStore(props: {
   onUpdateStoreSuccess: () => void;
   onBackClick: () => void;
-  storeDetails?: Store;
+  store: Store;
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
-  const { onUpdateStoreSuccess, onBackClick, storeDetails } = props;
+  const { onUpdateStoreSuccess, onBackClick, store: storeDetails } = props;
 
   const [displayName, setdisplayName] = useState(storeDetails?.displayName);
   const [fullName, setFullName] = useState(storeDetails?.fullName);

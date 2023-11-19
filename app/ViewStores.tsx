@@ -16,7 +16,12 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
   const [stores, setStores] = useState<Store[]>([]);
   const [storeIsSelected, setStoreIsSelected] = useState(false);
-  const [storeDetails, setPrefilledStoreDetails] = useState<Store>();
+  const [storeDetails, setPrefilledStoreDetails] = useState<Store>({
+    id: "",
+    displayName: "",
+    fullName: "",
+    suburb: "",
+  });
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
@@ -58,7 +63,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
             setStoreIsSelected(false);
             console.log("function to overwrite existing store data goes here");
           }}
-          storeDetails={storeDetails}
+          store={storeDetails}
         ></UpdateStore>
       </Wrapper>
     );
