@@ -6,7 +6,6 @@ import { CreateStore } from "./CreateStores";
 enum StoresPage {
   View,
   Create,
-  Update,
 }
 
 export function Stores(): ReactElement {
