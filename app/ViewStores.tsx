@@ -71,12 +71,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   return (
     <Wrapper>
       {displayedStores}
-      <LargeButton
-        onClick={() => {
-          onCreateClick();
-        }}
-        backgroundColor={greyInactiveButton}
-      >
+      <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
         Create
       </LargeButton>
     </Wrapper>
