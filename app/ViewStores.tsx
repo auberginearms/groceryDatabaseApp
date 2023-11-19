@@ -67,20 +67,20 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
         ></UpdateStore>
       </Wrapper>
     );
-  } else
-    return (
-      <Wrapper>
-        {displayedStores}
-        <LargeButton
-          onClick={() => {
-            onCreateClick();
-          }}
-          backgroundColor={greyInactiveButton}
-        >
-          Create
-        </LargeButton>
-      </Wrapper>
-    );
+  }
+  return (
+    <Wrapper>
+      {displayedStores}
+      <LargeButton
+        onClick={() => {
+          onCreateClick();
+        }}
+        backgroundColor={greyInactiveButton}
+      >
+        Create
+      </LargeButton>
+    </Wrapper>
+  );
 }
 
 const Cell = styled.div`
