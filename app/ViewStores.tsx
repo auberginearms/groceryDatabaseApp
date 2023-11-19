@@ -15,12 +15,9 @@ import { UpdateStore } from "./UpdateStore";
 export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
   const [storeList, setStoreList] = useState<Store[]>([]);
-  const [store, setStore] = useState<Store>({
-    id: "",
-    displayName: "",
-    fullName: "",
-    suburb: "",
-  });
+  const [storeBeingUpdated, setStoreBeingUpdated] = useState<
+    Store | undefined
+  >();
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
@@ -32,7 +29,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
     return (
       <div
         onClick={() => {
-          setStore(store);
+          setStoreBeingUpdated(store);
         }}
         key={store.displayName}
         style={{
@@ -50,27 +47,17 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
       </div>
     );
   });
-  if (store.displayName !== "") {
+  if (storeBeingUpdated !== undefined) {
     return (
       <Wrapper>
         <UpdateStore
           onBackClick={() => {
-            setStore({
-              id: "",
-              displayName: "",
-              fullName: "",
-              suburb: "",
-            });
+            setStoreBeingUpdated(undefined);
           }}
           onUpdateStoreSuccess={() => {
-            setStore({
-              id: "",
-              displayName: "",
-              fullName: "",
-              suburb: "",
-            });
+            setStoreBeingUpdated(undefined);
           }}
-          store={store}
+          store={storeBeingUpdated}
         ></UpdateStore>
       </Wrapper>
     );
