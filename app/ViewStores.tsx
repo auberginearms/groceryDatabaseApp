@@ -14,9 +14,8 @@ import { UpdateStore } from "./UpdateStore";
 
 export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
-  const [stores, setStores] = useState<Store[]>([]);
-  const [storeIsSelected, setStoreIsSelected] = useState(false);
-  const [storeDetails, setPrefilledStoreDetails] = useState<Store>({
+  const [storeList, setStoreList] = useState<Store[]>([]);
+  const [store, setStore] = useState<Store>({
     id: "",
     displayName: "",
     fullName: "",
@@ -25,16 +24,15 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
-      setStores(result);
+      setStoreList(result);
     };
     fetchData();
   }, []);
-  const displayedStores = stores.map((store) => {
+  const displayedStores = storeList.map((store) => {
     return (
       <div
         onClick={() => {
-          setStoreIsSelected(true);
-          setPrefilledStoreDetails(store);
+          setStore(store);
         }}
         key={store.displayName}
         style={{
@@ -52,18 +50,27 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
       </div>
     );
   });
-  if (storeIsSelected) {
+  if (store.displayName !== "") {
     return (
       <Wrapper>
         <UpdateStore
           onBackClick={() => {
-            setStoreIsSelected(false);
+            setStore({
+              id: "",
+              displayName: "",
+              fullName: "",
+              suburb: "",
+            });
           }}
           onUpdateStoreSuccess={() => {
-            setStoreIsSelected(false);
-            console.log("function to overwrite existing store data goes here");
+            setStore({
+              id: "",
+              displayName: "",
+              fullName: "",
+              suburb: "",
+            });
           }}
-          store={storeDetails}
+          store={store}
         ></UpdateStore>
       </Wrapper>
     );
