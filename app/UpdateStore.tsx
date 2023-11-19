@@ -15,14 +15,14 @@ export function UpdateStore(props: {
   store: Store;
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
-  const { onUpdateStoreSuccess, onBackClick, store: storeDetails } = props;
+  const { onUpdateStoreSuccess, onBackClick, store } = props;
 
-  const [displayName, setdisplayName] = useState(storeDetails?.displayName);
-  const [fullName, setFullName] = useState(storeDetails?.fullName);
-  const [suburb, setSuburb] = useState(storeDetails?.suburb);
+  const [displayName, setdisplayName] = useState(store.displayName);
+  const [fullName, setFullName] = useState(store.fullName);
+  const [suburb, setSuburb] = useState(store.suburb);
   return (
     <Wrapper>
-      <PageHeader>{storeDetails?.displayName}</PageHeader>
+      <PageHeader>{store.displayName}</PageHeader>
       <div>
         <StyledForm>
           <FormGroup>
