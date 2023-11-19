@@ -22,7 +22,7 @@ export function UpdateStore(props: {
   const [suburb, setSuburb] = useState(storeDetails?.suburb);
   return (
     <Wrapper>
-      <PageHeader>{storeDetails?.displayName.toUpperCase()}</PageHeader>
+      <PageHeader>{storeDetails?.displayName}</PageHeader>
       <div>
         <StyledForm>
           <FormGroup>
