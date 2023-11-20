@@ -25,7 +25,7 @@ export function CreateStore(props: {
 
   return (
     <Wrapper>
-      <PageHeader> Create Location</PageHeader>
+      <PageHeader> Create Store</PageHeader>
       <div>
         <StyledForm>
           <FormGroup>

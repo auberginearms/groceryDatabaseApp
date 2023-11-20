@@ -1,33 +1,56 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
-import { Location } from "./types";
-import { darkGrey, black, greyInactiveButton } from "./ui/colourLibrary";
+import { Store } from "./types";
+import {
+  darkGrey,
+  black,
+  greyInactiveButton,
+  skyBlue,
+} from "./ui/colourLibrary";
 import { LargeButton } from "./ui/LargeButton";
 import { getStores } from "@/server/getStores";
+import { UpdateStore } from "./UpdateStore";
 
-export function ViewStores(props: {
-  onCreateClick: () => void;
-  onStoreClick: () => void;
-}): ReactElement {
-  const { onCreateClick, onStoreClick } = props;
-  const [stores, setStores] = useState<Location[]>([]);
+export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
+  const { onCreateClick } = props;
+  const [storeList, setStoreList] = useState<Store[]>([]);
+  const [storeBeingUpdated, setStoreBeingUpdated] = useState<
+    Store | undefined
+  >();
   useEffect(() => {
     const fetchData = async () => {
       const result = await getStores();
-      setStores(result);
+      setStoreList(result);
     };
     fetchData();
   }, []);
 
-  const displayedStores = stores.map((store) => {
+  if (storeBeingUpdated !== undefined) {
+    return (
+      <Wrapper>
+        <UpdateStore
+          onBackClick={() => {
+            setStoreBeingUpdated(undefined);
+          }}
+          onUpdateStoreSuccess={() => {
+            setStoreBeingUpdated(undefined);
+          }}
+          store={storeBeingUpdated}
+        ></UpdateStore>
+      </Wrapper>
+    );
+  }
+  const displayedStores = storeList.map((store) => {
     return (
       <div
-        onClick={onStoreClick}
+        onClick={() => {
+          setStoreBeingUpdated(store);
+        }}
         key={store.displayName}
         style={{
           display: "flex",
-          backgroundColor: "#00c2ff",
+          backgroundColor: skyBlue,
           borderBottom: "2px",
           width: "100%",
           justifyContent: "space-between",
@@ -43,12 +66,7 @@ export function ViewStores(props: {
   return (
     <Wrapper>
       {displayedStores}
-      <LargeButton
-        onClick={() => {
-          onCreateClick();
-        }}
-        backgroundColor={greyInactiveButton}
-      >
+      <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
         Create
       </LargeButton>
     </Wrapper>

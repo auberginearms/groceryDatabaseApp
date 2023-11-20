@@ -2,12 +2,12 @@ import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { Deals } from "./Deals";
 import { redActiveButton, greyInactiveButton, black } from "./ui/colourLibrary";
-import { Stores } from "./Stores";
 import { LargeButton } from "./ui/LargeButton";
+import { Stores } from "./Stores";
 
 enum TabDisplay {
   Deals,
-  Locations,
+  Stores,
 }
 
 export function TabNavigation(): ReactElement {
@@ -39,19 +39,19 @@ export function TabNavigation(): ReactElement {
         <LargeButton
           width={150}
           backgroundColor={
-            displayTab === TabDisplay.Locations
+            displayTab === TabDisplay.Stores
               ? redActiveButton
               : greyInactiveButton
           }
           onClick={() => {
-            setdisplayTab(TabDisplay.Locations);
+            setdisplayTab(TabDisplay.Stores);
           }}
         >
-          Locations
+          Stores
         </LargeButton>
       </div>
       {displayTab === TabDisplay.Deals && <Deals />}
-      {displayTab === TabDisplay.Locations && <Stores />}
+      {displayTab === TabDisplay.Stores && <Stores />}
     </Wrapper>
   );
 }

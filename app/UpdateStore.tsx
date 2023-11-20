@@ -7,24 +7,22 @@ import { PageHeader } from "./ui/PageHeader";
 import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
+import { Store } from "./types";
 
 export function UpdateStore(props: {
   onUpdateStoreSuccess: () => void;
   onBackClick: () => void;
-  //   prefilledDisplayName: string;
-  //   prefilledFullName: string;
-  //   prefilledSuburb: string;
+  store: Store;
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
+  const { onUpdateStoreSuccess, onBackClick, store } = props;
 
-  const [displayName, setdisplayName] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [suburb, setSuburb] = useState("");
-
-  const { onUpdateStoreSuccess: onUpdateStoreClick, onBackClick } = props;
+  const [displayName, setdisplayName] = useState(store.displayName);
+  const [fullName, setFullName] = useState(store.fullName);
+  const [suburb, setSuburb] = useState(store.suburb);
   return (
     <Wrapper>
-      <PageHeader> STORE NAME</PageHeader>
+      <PageHeader>{store.displayName}</PageHeader>
       <div>
         <StyledForm>
           <FormGroup>
@@ -76,7 +74,7 @@ export function UpdateStore(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
-            onUpdateStoreClick();
+            onUpdateStoreSuccess();
           }}
           backgroundColor={greenActiveButton}
         >
