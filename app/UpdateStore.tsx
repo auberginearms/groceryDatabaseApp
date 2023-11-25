@@ -8,6 +8,7 @@ import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControl } from "./ui/FormControl";
 import { Store } from "./types";
+import { updateStore } from "@/server/updateStore";
 
 export function UpdateStore(props: {
   onUpdateStoreSuccess: () => void;
@@ -64,7 +65,7 @@ export function UpdateStore(props: {
           Cancel
         </LargeButton>
         <LargeButton
-          onClick={() => {
+          onClick={async () => {
             if (displayName === "") {
               return setErrorMessage("Display name cannot be empty");
             }
@@ -74,6 +75,7 @@ export function UpdateStore(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
+            updateStore(store, displayName, fullName, suburb);
             onUpdateStoreSuccess();
           }}
           backgroundColor={greenActiveButton}

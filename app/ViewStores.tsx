@@ -33,7 +33,11 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
           onBackClick={() => {
             setStoreBeingUpdated(undefined);
           }}
-          onUpdateStoreSuccess={() => {
+          onUpdateStoreSuccess={async () => {
+            {
+              const result = await getStores();
+              setStoreList(result);
+            }
             setStoreBeingUpdated(undefined);
           }}
           store={storeBeingUpdated}
