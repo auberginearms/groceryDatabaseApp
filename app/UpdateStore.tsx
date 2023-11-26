@@ -75,7 +75,7 @@ export function UpdateStore(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
-            updateStore(store, displayName, fullName, suburb);
+            await updateStore(store, displayName, fullName, suburb);
             onUpdateStoreSuccess();
           }}
           backgroundColor={greenActiveButton}
