@@ -34,10 +34,8 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
             setStoreBeingUpdated(undefined);
           }}
           onUpdateStoreSuccess={async () => {
-            {
-              const result = await getStores();
-              setStoreList(result);
-            }
+            const result = await getStores();
+            setStoreList(result);
             setStoreBeingUpdated(undefined);
           }}
           store={storeBeingUpdated}
