@@ -11,8 +11,7 @@ export async function updateStore(
 ) {
   await prisma.store.update({
     where: {
-      displayName: store.displayName,
-      suburb: store.suburb,
+      id: store.id,
     },
     data: {
       displayName: newDisplayName,
