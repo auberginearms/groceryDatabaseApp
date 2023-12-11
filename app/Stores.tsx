@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { ViewStores } from "./ViewStores";
-import { CreateStore } from "./CreateStores";
+import { CreateStore } from "./CreateStore";
 
 enum StoresPage {
   View,
