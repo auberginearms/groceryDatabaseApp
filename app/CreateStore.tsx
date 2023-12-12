@@ -20,6 +20,7 @@ export function CreateStore(props: {
   const [displayName, setDisplayName] = useState("");
   const [fullName, setFullName] = useState("");
   const [suburb, setSuburb] = useState("");
+  const [fullNameHasBeenModified, setFullNameHasBeenModified] = useState(false);
 
   const { onCreateStoreClick, onCancelClick } = props;
   const setDisplayNameAndFullName = (displayName: string) => {
@@ -38,9 +39,9 @@ export function CreateStore(props: {
               placeholder="enter display name of store"
               value={displayName}
               onChange={
-                displayName === fullName
-                  ? setDisplayNameAndFullName
-                  : setDisplayName
+                fullNameHasBeenModified
+                  ? setDisplayName
+                  : setDisplayNameAndFullName
               }
             />
           </FormGroup>
@@ -52,6 +53,9 @@ export function CreateStore(props: {
               type="text"
               placeholder="enter full name of store"
               value={fullName}
+              onInput={() => {
+                setFullNameHasBeenModified(true);
+              }}
               onChange={setFullName}
             />
           </FormGroup>
@@ -71,7 +75,10 @@ export function CreateStore(props: {
 
       <div style={{ display: "flex" }}>
         <LargeButton
-          onClick={onCancelClick}
+          onClick={() => {
+            onCancelClick();
+            setFullNameHasBeenModified(false);
+          }}
           backgroundColor={greyInactiveButton}
         >
           Cancel
