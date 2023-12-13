@@ -27,6 +27,10 @@ export function CreateStore(props: {
     setDisplayName(displayName);
     setFullName(displayName);
   };
+  const setFullNameAndFullNameModified = (fullName: string) => {
+    setFullNameHasBeenModified(true);
+    setFullName(fullName);
+  };
   return (
     <Wrapper>
       <PageHeader> Create Store</PageHeader>
@@ -53,10 +57,7 @@ export function CreateStore(props: {
               type="text"
               placeholder="enter full name of store"
               value={fullName}
-              onInput={() => {
-                setFullNameHasBeenModified(true);
-              }}
-              onChange={setFullName}
+              onChange={setFullNameAndFullNameModified}
             />
           </FormGroup>
           <FormGroup>
