@@ -17,12 +17,20 @@ export function CreateStore(props: {
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [displayName, setdisplayName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [fullName, setFullName] = useState("");
   const [suburb, setSuburb] = useState("");
+  const [fullNameHasBeenModified, setFullNameHasBeenModified] = useState(false);
 
   const { onCreateStoreClick, onCancelClick } = props;
-
+  const setDisplayNameAndFullName = (displayName: string) => {
+    setDisplayName(displayName);
+    setFullName(displayName);
+  };
+  const setFullNameAndFullNameModified = (fullName: string) => {
+    setFullNameHasBeenModified(true);
+    setFullName(fullName);
+  };
   return (
     <Wrapper>
       <PageHeader> Create Store</PageHeader>
@@ -34,7 +42,11 @@ export function CreateStore(props: {
               type="text"
               placeholder="enter display name of store"
               value={displayName}
-              onChange={setdisplayName}
+              onChange={
+                fullNameHasBeenModified
+                  ? setDisplayName
+                  : setDisplayNameAndFullName
+              }
             />
           </FormGroup>
 
@@ -45,7 +57,7 @@ export function CreateStore(props: {
               type="text"
               placeholder="enter full name of store"
               value={fullName}
-              onChange={setFullName}
+              onChange={setFullNameAndFullNameModified}
             />
           </FormGroup>
           <FormGroup>
@@ -66,6 +78,7 @@ export function CreateStore(props: {
         <LargeButton
           onClick={() => {
             onCancelClick();
+            setFullNameHasBeenModified(false);
           }}
           backgroundColor={greyInactiveButton}
         >
