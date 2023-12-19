@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode, useState } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { greyButtonBackground } from "./colourLibrary";
@@ -8,8 +8,9 @@ export function LargeButton(props: {
   children: ReactNode;
   backgroundColor?: string;
   width?: number;
+  isLoading?: boolean;
 }): ReactElement {
-  const { onClick, children, backgroundColor, width } = props;
+  const { onClick, children, backgroundColor, width, isLoading } = props;
   return (
     <Button
       style={{
@@ -28,7 +29,7 @@ export function LargeButton(props: {
         onClick();
       }}
     >
-      {children}
+      {isLoading ? "Loading" : children}
     </Button>
   );
 }
