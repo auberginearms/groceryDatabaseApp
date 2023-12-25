@@ -112,9 +112,9 @@ export function CreateStore(props: {
               );
             }
             setErrorMessage("");
-            setAwaitingCreateStoreCheck(false);
             onCreateStoreClick();
             createNewStore(displayName, fullName, suburb);
+            setAwaitingCreateStoreCheck(false);
           }}
           backgroundColor={greenActiveButton}
         >

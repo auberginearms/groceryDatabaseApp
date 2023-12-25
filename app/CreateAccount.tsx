@@ -61,10 +61,10 @@ export function CreateAccount(props: {
             setAwaitingCreateAccountCheck(false);
             return setErrorMessage("Username already exists");
           }
-          setAwaitingCreateAccountCheck(false);
           setErrorMessage("");
           createNewAccount(username, password);
           onSubmitSuccess();
+          setAwaitingCreateAccountCheck(false);
         }}
       >
         Submit
