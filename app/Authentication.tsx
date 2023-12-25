@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { Login } from "./Login";
-import { AccountCreation } from "./AccountCreation";
+import { CreateAccount } from "./CreateAccount";
 
 enum PageDisplay {
   Login,
@@ -33,7 +33,7 @@ export function Authentication(props: {
         />
       )}
       {displayPage === PageDisplay.AccountCreation && (
-        <AccountCreation
+        <CreateAccount
           onGoBackClick={() => {
             setdisplayPage(PageDisplay.Login);
           }}

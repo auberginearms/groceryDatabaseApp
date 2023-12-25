@@ -9,8 +9,10 @@ export function LargeButton(props: {
   backgroundColor?: string;
   width?: number;
   isLoading?: boolean;
+  isDisabled?: boolean;
 }): ReactElement {
-  const { onClick, children, backgroundColor, width, isLoading } = props;
+  const { onClick, children, backgroundColor, width, isLoading, isDisabled } =
+    props;
   return (
     <Button
       style={{
@@ -28,6 +30,7 @@ export function LargeButton(props: {
       onClick={() => {
         onClick();
       }}
+      disabled={isDisabled}
     >
       {isLoading ? "Loading" : children}
     </Button>
