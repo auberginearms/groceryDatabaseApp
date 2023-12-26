@@ -14,7 +14,7 @@ import { UpdateStore } from "./UpdateStore";
 
 export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
-  const [storeList, setStoreList] = useState<Store[]>([]);
+  const [storeList, setStoreList] = useState<Store[] | undefined>(undefined);
   const [storeBeingUpdated, setStoreBeingUpdated] = useState<
     Store | undefined
   >();
@@ -43,6 +43,20 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
       </Wrapper>
     );
   }
+  const createStoreButton = (
+    <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
+      Create
+    </LargeButton>
+  );
+
+  if (storeList === undefined) {
+    return (
+      <Wrapper>
+        Loading
+        {createStoreButton}
+      </Wrapper>
+    );
+  }
   const displayedStores = storeList.map((store) => {
     return (
       <div
@@ -67,10 +81,8 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   });
   return (
     <Wrapper>
-      {storeList.length !== 0 ? displayedStores : "Loading"}
-      <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
-        Create
-      </LargeButton>
+      {displayedStores}
+      {createStoreButton}
     </Wrapper>
   );
 }
