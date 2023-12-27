@@ -13,7 +13,7 @@ export function LoadingSpinner(props: {
         height,
         width,
       }}
-    ></StyledDiv>
+    />
   );
 }
 
