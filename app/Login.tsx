@@ -15,7 +15,7 @@ export function Login(props: {
 }): ReactElement {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [waitingAuthentication, setWaitingAuthentication] = useState(false);
+  const [awaitingAuthentication, setAwaitingAuthentication] = useState(false);
 
   const {
     onLoginSuccess,
@@ -54,19 +54,24 @@ export function Login(props: {
       </StyledForm>
       <LargeButton
         onClick={async () => {
-          setWaitingAuthentication(true);
+          setAwaitingAuthentication(true);
           if (await credentialsAreValid(username, password)) {
             onLoginSuccess();
           } else {
             setDisplayInvalidMessage(true);
-            setWaitingAuthentication(false);
+            setAwaitingAuthentication(false);
           }
         }}
-        isLoading={waitingAuthentication}
+        isLoading={awaitingAuthentication}
       >
         Log in
       </LargeButton>
-      <LargeButton onClick={onAccountCreationClick}>Create account</LargeButton>
+      <LargeButton
+        onClick={onAccountCreationClick}
+        isDisabled={awaitingAuthentication}
+      >
+        Create account
+      </LargeButton>
     </Wrapper>
   );
 }

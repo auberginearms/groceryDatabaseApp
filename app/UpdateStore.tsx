@@ -17,10 +17,11 @@ export function UpdateStore(props: {
 }): ReactElement {
   const [errorMessage, setErrorMessage] = useState("");
   const { onUpdateStoreSuccess, onBackClick, store } = props;
-
   const [displayName, setdisplayName] = useState(store.displayName);
   const [fullName, setFullName] = useState(store.fullName);
   const [suburb, setSuburb] = useState(store.suburb);
+  const [awaitingUpdateStoreCheck, setAwaitingUpdateStoreCheck] =
+    useState(false);
   return (
     <Wrapper>
       <PageHeader>{store.displayName}</PageHeader>
@@ -61,10 +62,15 @@ export function UpdateStore(props: {
       {errorMessage}
 
       <div>
-        <LargeButton onClick={onBackClick} backgroundColor={greyInactiveButton}>
+        <LargeButton
+          onClick={onBackClick}
+          backgroundColor={greyInactiveButton}
+          isDisabled={awaitingUpdateStoreCheck}
+        >
           Cancel
         </LargeButton>
         <LargeButton
+          isLoading={awaitingUpdateStoreCheck}
           onClick={async () => {
             if (displayName === "") {
               return setErrorMessage("Display name cannot be empty");
@@ -75,8 +81,10 @@ export function UpdateStore(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
+            setAwaitingUpdateStoreCheck(true);
             await updateStore(store, displayName, fullName, suburb);
             onUpdateStoreSuccess();
+            setAwaitingUpdateStoreCheck(false);
           }}
           backgroundColor={greenActiveButton}
         >

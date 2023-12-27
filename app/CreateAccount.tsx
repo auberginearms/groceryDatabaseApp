@@ -9,7 +9,7 @@ import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 import { LargeButton } from "./ui/LargeButton";
 import { createNewAccount } from "@/server/createNewAccount";
 
-export function AccountCreation(props: {
+export function CreateAccount(props: {
   onGoBackClick: () => void;
   onSubmitSuccess: () => void;
 }): ReactElement {
@@ -17,6 +17,8 @@ export function AccountCreation(props: {
   const [errorMessage, setErrorMessage] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [awaitingCreateAccountCheck, setAwaitingCreateAccountCheck] =
+    useState(false);
 
   return (
     <Wrapper>
@@ -46,6 +48,7 @@ export function AccountCreation(props: {
         </FormGroup>
       </StyledForm>
       <LargeButton
+        isLoading={awaitingCreateAccountCheck}
         onClick={async () => {
           if (username === "") {
             return setErrorMessage("Username cannot be empty");
@@ -53,17 +56,25 @@ export function AccountCreation(props: {
           if (password === "") {
             return setErrorMessage("Password cannot be empty");
           }
+          setAwaitingCreateAccountCheck(true);
           if (await usernameAlreadyExists(username)) {
+            setAwaitingCreateAccountCheck(false);
             return setErrorMessage("Username already exists");
           }
           setErrorMessage("");
           createNewAccount(username, password);
           onSubmitSuccess();
+          setAwaitingCreateAccountCheck(false);
         }}
       >
         Submit
       </LargeButton>
-      <LargeButton onClick={onGoBackClick}>Go back</LargeButton>
+      <LargeButton
+        onClick={onGoBackClick}
+        isDisabled={awaitingCreateAccountCheck}
+      >
+        Go back
+      </LargeButton>
     </Wrapper>
   );
 }

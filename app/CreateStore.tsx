@@ -21,7 +21,8 @@ export function CreateStore(props: {
   const [fullName, setFullName] = useState("");
   const [suburb, setSuburb] = useState("");
   const [fullNameHasBeenModified, setFullNameHasBeenModified] = useState(false);
-
+  const [awaitingCreateStoreCheck, setAwaitingCreateStoreCheck] =
+    useState(false);
   const { onCreateStoreClick, onCancelClick } = props;
   const setDisplayNameAndFullName = (displayName: string) => {
     setDisplayName(displayName);
@@ -81,10 +82,12 @@ export function CreateStore(props: {
             setFullNameHasBeenModified(false);
           }}
           backgroundColor={greyInactiveButton}
+          isDisabled={awaitingCreateStoreCheck}
         >
           Cancel
         </LargeButton>
         <LargeButton
+          isLoading={awaitingCreateStoreCheck}
           onClick={async () => {
             if (displayName === "") {
               return setErrorMessage("Display name cannot be empty");
@@ -95,12 +98,15 @@ export function CreateStore(props: {
             if (suburb === "") {
               return setErrorMessage("Suburb cannot be empty");
             }
+            setAwaitingCreateStoreCheck(true);
             if (await displayNameAndSuburbAlreadyExist(displayName, suburb)) {
+              setAwaitingCreateStoreCheck(false);
               return setErrorMessage(
                 "Display name and suburb combination already exists"
               );
             }
             if (await fullNameAndSuburbAlreadyExist(fullName, suburb)) {
+              setAwaitingCreateStoreCheck(false);
               return setErrorMessage(
                 "Full name and suburb combination already exists"
               );
@@ -108,6 +114,7 @@ export function CreateStore(props: {
             setErrorMessage("");
             onCreateStoreClick();
             createNewStore(displayName, fullName, suburb);
+            setAwaitingCreateStoreCheck(false);
           }}
           backgroundColor={greenActiveButton}
         >
