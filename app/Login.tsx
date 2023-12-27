@@ -7,6 +7,7 @@ import { StyledForm } from "./ui/StyledForm";
 import { FormLabel } from "./ui/FormLabel";
 import { FormControl } from "./ui/FormControl";
 import { LargeButton } from "./ui/LargeButton";
+import { LoadingSpinner } from "./ui/LoadingSpinner";
 
 export function Login(props: {
   onLoginSuccess: () => void;

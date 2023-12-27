@@ -11,6 +11,7 @@ import {
 import { LargeButton } from "./ui/LargeButton";
 import { getStores } from "@/server/getStores";
 import { UpdateStore } from "./UpdateStore";
+import { LoadingSpinner } from "./ui/LoadingSpinner";
 
 export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
@@ -52,7 +53,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   if (storeList === undefined) {
     return (
       <Wrapper>
-        Loading
+        <LoadingSpinner height={70} width={70}></LoadingSpinner>
         {createStoreButton}
       </Wrapper>
     );

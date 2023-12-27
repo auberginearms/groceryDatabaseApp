@@ -7,3 +7,4 @@ export const redActiveButton = "#E86868";
 export const greenActiveButton = "#4FFF32";
 export const greyButtonBackground = "#b5a8a8";
 export const skyBlue = "#00c2ff";
+export const loadingRed = "#FF0000";

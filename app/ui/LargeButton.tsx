@@ -2,6 +2,7 @@ import { ReactElement, ReactNode, useState } from "react";
 import { Button } from "react-bootstrap";
 import styled from "styled-components";
 import { greyButtonBackground } from "./colourLibrary";
+import { LoadingSpinner } from "./LoadingSpinner";
 
 export function LargeButton(props: {
   onClick: () => void;
@@ -13,6 +14,7 @@ export function LargeButton(props: {
 }): ReactElement {
   const { onClick, children, backgroundColor, width, isLoading, isDisabled } =
     props;
+
   return (
     <Button
       style={{
@@ -32,7 +34,7 @@ export function LargeButton(props: {
       }}
       disabled={isDisabled}
     >
-      {isLoading ? "Loading" : children}
+      {isLoading ? <LoadingSpinner /> : children}
     </Button>
   );
 }
