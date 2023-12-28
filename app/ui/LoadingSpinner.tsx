@@ -2,8 +2,9 @@ import { ReactElement, ReactNode, useState } from "react";
 import { loadingRed } from "./colourLibrary";
 import styled, { keyframes } from "styled-components";
 import { serialize } from "v8";
+import { Size } from "../types";
 
-export function LoadingSpinner(props: { size: string }): ReactElement {
+export function LoadingSpinner(props: { size: Size }): ReactElement {
   const { size } = props;
   return (
     <StyledDiv

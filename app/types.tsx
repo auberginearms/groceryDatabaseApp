@@ -4,3 +4,5 @@ export type Store = {
   fullName: string;
   suburb: string;
 };
+
+export type Size = "large" | "small";
