@@ -8,8 +8,8 @@ export function LoadingSpinner(props: { size: string }): ReactElement {
   return (
     <StyledDiv
       style={{
-        height: size === "large" ? 50 : 20,
-        width: size === "large" ? 50 : 20,
+        height: size === "large" ? 48 : 24,
+        width: size === "large" ? 48 : 24,
       }}
     />
   );
