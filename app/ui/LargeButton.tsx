@@ -34,7 +34,7 @@ export function LargeButton(props: {
       }}
       disabled={isDisabled}
     >
-      {isLoading ? <LoadingSpinner /> : children}
+      {isLoading ? <LoadingSpinner size="small" /> : children}
     </Button>
   );
 }

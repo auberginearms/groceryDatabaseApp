@@ -1,17 +1,15 @@
 import { ReactElement, ReactNode, useState } from "react";
 import { loadingRed } from "./colourLibrary";
 import styled, { keyframes } from "styled-components";
+import { serialize } from "v8";
 
-export function LoadingSpinner(props: {
-  width?: number;
-  height?: number;
-}): ReactElement {
-  const { height, width } = props;
+export function LoadingSpinner(props: { size: string }): ReactElement {
+  const { size } = props;
   return (
     <StyledDiv
       style={{
-        height,
-        width,
+        height: size === "large" ? 50 : 20,
+        width: size === "large" ? 50 : 20,
       }}
     />
   );

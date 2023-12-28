@@ -53,7 +53,7 @@ export function ViewStores(props: { onCreateClick: () => void }): ReactElement {
   if (storeList === undefined) {
     return (
       <Wrapper>
-        <LoadingSpinner height={70} width={70}></LoadingSpinner>
+        <LoadingSpinner size="large"></LoadingSpinner>
         {createStoreButton}
       </Wrapper>
     );
