@@ -1,23 +1,14 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
-import { Deal, DealWithStore } from "./types";
-import {
-  darkGrey,
-  black,
-  greyInactiveButton,
-  skyBlue,
-} from "./ui/colourLibrary";
-import { LargeButton } from "./ui/LargeButton";
+import { DealWithStore } from "./types";
+import { darkGrey, black, skyBlue } from "./ui/colourLibrary";
 import { getDeals } from "@/server/getDeals";
-import { LoadingSpinner } from "./ui/LoadingSpinner";
 
-export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
-  const { onCreateClick } = props;
+export function ViewDeals(): ReactElement {
   const [dealList, setDealList] = useState<DealWithStore[] | undefined>(
     undefined
   );
-  const [dealBeingUpdated, setDealBeingUpdated] = useState<Deal | undefined>();
   useEffect(() => {
     const fetchData = async () => {
       const result = await getDeals();
@@ -26,26 +17,13 @@ export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
     fetchData();
   }, []);
 
-  const createDealButton = (
-    <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
-      Create
-    </LargeButton>
-  );
   if (dealList === undefined) {
-    return (
-      <Wrapper>
-        <LoadingSpinner size="large"></LoadingSpinner>
-        {createDealButton}
-      </Wrapper>
-    );
+    return <Wrapper></Wrapper>;
   }
 
   const displayedDeals = dealList.map((deal) => {
     return (
       <div
-        onClick={() => {
-          setDealBeingUpdated(deal);
-        }}
         key={deal.item}
         style={{
           display: "flex",
@@ -78,14 +56,7 @@ export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
       </div>
     );
   });
-  return (
-    <Wrapper>
-      {displayedDeals}
-      <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
-        Create
-      </LargeButton>
-    </Wrapper>
-  );
+  return <Wrapper>{displayedDeals}</Wrapper>;
 }
 
 const Cell = styled.div`
