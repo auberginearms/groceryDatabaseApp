@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
-import { Deal, DealAndStore } from "./types";
+import { Deal, DealWithStore } from "./types";
 import {
   darkGrey,
   black,
@@ -14,7 +14,7 @@ import { LoadingSpinner } from "./ui/LoadingSpinner";
 
 export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
   const { onCreateClick } = props;
-  const [dealList, setDealList] = useState<DealAndStore[] | undefined>(
+  const [dealList, setDealList] = useState<DealWithStore[] | undefined>(
     undefined
   );
   const [dealBeingUpdated, setDealBeingUpdated] = useState<Deal | undefined>();
