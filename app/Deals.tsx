@@ -1,11 +1,13 @@
-import { ReactElement } from "react";
-import { PageHeader } from "./ui/PageHeader";
+import { ReactElement, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
+import { ViewDeals } from "./ViewDeals";
+
+enum DealsPage {
+  View,
+}
 
 export function Deals(): ReactElement {
-  return (
-    <Wrapper>
-      <PageHeader>Deals go here</PageHeader>
-    </Wrapper>
-  );
+  const [dealsPage, setDealsPage] = useState(DealsPage.View);
+
+  return <Wrapper>{dealsPage === DealsPage.View && <ViewDeals />}</Wrapper>;
 }
