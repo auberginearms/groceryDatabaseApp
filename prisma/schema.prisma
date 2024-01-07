@@ -25,4 +25,15 @@ model Store {
   displayName   String    @unique
   fullName      String      
   suburb        String   
+  deals         Deal[]
+  }
+
+model Deal {
+  id            String       @default(cuid()) @id @unique
+  item          String    
+  pricePerUnit   Float @db.DoublePrecision     
+  unitType        String   
+  dateObserved DateTime @db.Date 
+  store Store @relation(fields:[storeID],references:id)
+  storeID String
   }

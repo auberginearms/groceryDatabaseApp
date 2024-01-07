@@ -6,3 +6,14 @@ export type Store = {
 };
 
 export type Size = "large" | "small";
+
+export type DealAndStore = Deal & { store: Store };
+
+export type Deal = {
+  id: string;
+  item: string;
+  pricePerUnit: number;
+  unitType: string;
+  dateObserved: Date;
+  storeID: string;
+};
