@@ -26,23 +26,6 @@ export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
     fetchData();
   }, []);
 
-  // if (dealBeingUpdated !== undefined) {
-  //   return (
-  //     <Wrapper>
-  //    <UpdateDeal
-  //         onBackClick={() => {
-  //           setDealBeingUpdated(undefined);
-  //         }}
-  //         onUpdateDealSuccess={async () => {
-  //           const result = await getDeals();
-  //           setDealList(result);
-  //           setDealBeingUpdated(undefined);
-  //         }}
-  //         deal={dealBeingUpdated}
-  //       ></UpdateDeal>
-  //     </Wrapper>
-  //   );
-  // }
   const createDealButton = (
     <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
       Create
