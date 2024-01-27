@@ -6,7 +6,7 @@ import { StyledForm } from "./ui/StyledForm";
 import { PageHeader } from "./ui/PageHeader";
 import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
-import { FormControl } from "./ui/FormControl";
+import { FormControlString } from "./ui/FormControlString";
 import { Store } from "./types";
 import { updateStore } from "@/server/updateStore";
 
@@ -29,7 +29,7 @@ export function UpdateStore(props: {
         <StyledForm>
           <FormGroup>
             <FormLabel>Display name</FormLabel>
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter display name of store"
               value={displayName}
@@ -40,7 +40,7 @@ export function UpdateStore(props: {
           <FormGroup>
             <FormLabel>Full name</FormLabel>
 
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter full name of store"
               value={fullName}
@@ -50,7 +50,7 @@ export function UpdateStore(props: {
           <FormGroup>
             <FormLabel>Suburb</FormLabel>
 
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter suburb"
               value={suburb}

@@ -1,9 +1,8 @@
-import { ChangeEvent, ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { Form, FormControlProps } from "react-bootstrap";
-import styled from "styled-components";
 import { greyButtonBackground } from "./colourLibrary";
 
-export function FormControl(
+export function FormControlString(
   props: Omit<FormControlProps, "onChange"> & {
     onChange: (newInput: string) => void;
   }

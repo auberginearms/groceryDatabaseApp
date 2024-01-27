@@ -4,7 +4,7 @@ import { FormGroup } from "./ui/FormGroup";
 import { Wrapper } from "./ui/Wrapper";
 import { StyledForm } from "./ui/StyledForm";
 import { FormLabel } from "./ui/FormLabel";
-import { FormControl } from "./ui/FormControl";
+import { FormControlString } from "./ui/FormControlString";
 import { usernameAlreadyExists } from "@/server/usernameAlreadyExists";
 import { LargeButton } from "./ui/LargeButton";
 import { createNewAccount } from "@/server/createNewAccount";
@@ -28,7 +28,7 @@ export function CreateAccount(props: {
 
         <FormGroup>
           <FormLabel>Username</FormLabel>
-          <FormControl
+          <FormControlString
             type="text"
             placeholder="enter your username"
             value={username}
@@ -39,7 +39,7 @@ export function CreateAccount(props: {
         <FormGroup>
           <FormLabel>Password</FormLabel>
 
-          <FormControl
+          <FormControlString
             type="password"
             placeholder="enter your password"
             value={password}
