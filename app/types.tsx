@@ -7,13 +7,15 @@ export type Store = {
 
 export type Size = "large" | "small";
 
+export type Unit = "kg" | "L" | "unit";
+
 export type DealWithStore = Deal & { store: Store };
 
 export type Deal = {
   id: string;
   item: string;
   pricePerUnit: number;
-  unitType: string;
+  unitType: Unit;
   dateObserved: Date;
   storeID: string;
 };

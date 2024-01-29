@@ -50,7 +50,6 @@ export function CreateDeal(props: {
                   alignItems: "center",
                 }}
               >
-                {" "}
                 <InputGroup.Text>$</InputGroup.Text>
                 <FormControlNumber
                   type="text"
@@ -60,6 +59,12 @@ export function CreateDeal(props: {
                   width={60}
                 />
               </div>
+            </FormGroup>
+            <FormGroup>
+              <FormLabel>Unit</FormLabel>
+              <FormCheck type="radio" label="kg"></FormCheck>
+              <FormCheck type="radio" label="kg"></FormCheck>
+              <FormCheck type="radio" label="kg"></FormCheck>
             </FormGroup>
           </div>
         </StyledForm>
