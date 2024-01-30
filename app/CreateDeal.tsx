@@ -60,12 +60,6 @@ export function CreateDeal(props: {
                 />
               </div>
             </FormGroup>
-            <FormGroup>
-              <FormLabel>Unit</FormLabel>
-              <FormCheck type="radio" label="kg"></FormCheck>
-              <FormCheck type="radio" label="kg"></FormCheck>
-              <FormCheck type="radio" label="kg"></FormCheck>
-            </FormGroup>
           </div>
         </StyledForm>
       </div>
