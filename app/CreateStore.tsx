@@ -6,7 +6,7 @@ import { StyledForm } from "./ui/StyledForm";
 import { PageHeader } from "./ui/PageHeader";
 import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
-import { FormControl } from "./ui/FormControl";
+import { FormControlString } from "./ui/FormControlString";
 import { createNewStore } from "@/server/createNewStore";
 import { displayNameAndSuburbAlreadyExist } from "@/server/displayNameAndSuburbAlreadyExists";
 import { fullNameAndSuburbAlreadyExist } from "@/server/fullNameAndSuburbAlreadyExist";
@@ -39,7 +39,7 @@ export function CreateStore(props: {
         <StyledForm>
           <FormGroup>
             <FormLabel>Display name</FormLabel>
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter display name of store"
               value={displayName}
@@ -54,7 +54,7 @@ export function CreateStore(props: {
           <FormGroup>
             <FormLabel>Full name</FormLabel>
 
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter full name of store"
               value={fullName}
@@ -64,7 +64,7 @@ export function CreateStore(props: {
           <FormGroup>
             <FormLabel>Suburb</FormLabel>
 
-            <FormControl
+            <FormControlString
               type="text"
               placeholder="enter suburb"
               value={suburb}

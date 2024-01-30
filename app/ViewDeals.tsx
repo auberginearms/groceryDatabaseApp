@@ -1,12 +1,23 @@
 import { ReactElement, useEffect, useState } from "react";
 import { Wrapper } from "./ui/Wrapper";
 import { styled } from "styled-components";
-import { DealWithStore } from "./types";
-import { darkGrey, black, skyBlue } from "./ui/colourLibrary";
+import { Deal, DealWithStore } from "./types";
+import {
+  darkGrey,
+  black,
+  skyBlue,
+  greyInactiveButton,
+} from "./ui/colourLibrary";
 import { getDeals } from "@/server/getDeals";
+import { LoadingSpinner } from "./ui/LoadingSpinner";
+import { LargeButton } from "./ui/LargeButton";
 
-export function ViewDeals(): ReactElement {
+export function ViewDeals(props: { onCreateClick: () => void }): ReactElement {
+  const { onCreateClick } = props;
   const [dealList, setDealList] = useState<DealWithStore[] | undefined>(
+    undefined
+  );
+  const [dealBeingUpdated, setDealBeingUpdated] = useState<Deal | undefined>(
     undefined
   );
   useEffect(() => {
@@ -17,8 +28,20 @@ export function ViewDeals(): ReactElement {
     fetchData();
   }, []);
 
+  const createDealButton = (
+    <LargeButton onClick={onCreateClick} backgroundColor={greyInactiveButton}>
+      Create
+    </LargeButton>
+  );
+
   if (dealList === undefined) {
-    return <Wrapper></Wrapper>;
+    return (
+      <Wrapper>
+        {" "}
+        <LoadingSpinner size="large"></LoadingSpinner>
+        {createDealButton}
+      </Wrapper>
+    );
   }
 
   const displayedDeals = dealList.map((deal) => {
@@ -56,7 +79,12 @@ export function ViewDeals(): ReactElement {
       </div>
     );
   });
-  return <Wrapper>{displayedDeals}</Wrapper>;
+  return (
+    <Wrapper>
+      {displayedDeals}
+      {createDealButton}
+    </Wrapper>
+  );
 }
 
 const Cell = styled.div`
