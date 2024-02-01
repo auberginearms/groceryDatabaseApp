@@ -50,7 +50,6 @@ export function CreateDeal(props: {
                   alignItems: "center",
                 }}
               >
-                {" "}
                 <InputGroup.Text>$</InputGroup.Text>
                 <FormControlNumber
                   type="text"
