@@ -22,7 +22,7 @@ export function FormControlNumber(
         onChange(value);
       }}
       style={{
-        width: width !== undefined ? width : 160,
+        width: width ? width : 160,
         height: 32,
         background: greyButtonBackground,
         borderRadius: 12,
