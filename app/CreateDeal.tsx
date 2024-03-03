@@ -7,19 +7,22 @@ import { PageHeader } from "./ui/PageHeader";
 import { FormLabel } from "./ui/FormLabel";
 import { FormGroup } from "./ui/FormGroup";
 import { FormControlString } from "./ui/FormControlString";
-import { Form, FormCheck, InputGroup } from "react-bootstrap";
+import { InputGroup } from "react-bootstrap";
 import { FormControlNumber } from "./ui/FormControlNumber";
+import { FormCheckRadio } from "./ui/FormCheckRadio";
 
 export function CreateDeal(props: {
   onCreateDealClick: () => void;
   onCancelClick: () => void;
 }): ReactElement {
+  const units = ["kg", "L", "unit"];
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
   const [pricePerUnit, setPricePerUnit] = useState<string>("0");
-  const [date, setDate] = useState(new Date());
+  const [selectedUnit, setSelectedUnit] = useState(units[0]);
   const [awaitingCreateDealCheck, setAwaitingCreateDealCheck] = useState(false);
-  const { onCreateDealClick, onCancelClick } = props;
+  const { onCancelClick, onCreateDealClick } = props;
+
   return (
     <Wrapper>
       <PageHeader> Create Deal</PageHeader>
@@ -60,6 +63,21 @@ export function CreateDeal(props: {
                 />
               </div>
             </FormGroup>
+            <FormGroup>
+              <FormLabel>Unit</FormLabel>
+              {units.map((unit, index) => {
+                return (
+                  <FormCheckRadio
+                    key={index}
+                    onChange={(newUnit: string) => {
+                      setSelectedUnit(newUnit);
+                    }}
+                    unit={unit}
+                    value={selectedUnit}
+                  ></FormCheckRadio>
+                );
+              })}
+            </FormGroup>
           </div>
         </StyledForm>
       </div>
@@ -84,13 +102,6 @@ export function CreateDeal(props: {
             if (pricePerUnit === "0") {
               return setErrorMessage("Price cannot be $0");
             }
-
-            console.log(
-              "item:" + itemName,
-              typeof itemName,
-              "price per unit:" + pricePerUnit,
-              typeof pricePerUnit
-            );
           }}
           backgroundColor={greenActiveButton}
         >
