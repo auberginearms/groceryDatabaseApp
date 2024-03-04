@@ -11,15 +11,22 @@ import { InputGroup } from "react-bootstrap";
 import { FormControlNumber } from "./ui/FormControlNumber";
 import { FormCheckRadio } from "./ui/FormCheckRadio";
 
+enum Units {
+  kg = "kg",
+  L = "L",
+  unit = "unit",
+}
+
+const units = [Units.kg, Units.L, Units.unit];
+
 export function CreateDeal(props: {
   onCreateDealClick: () => void;
   onCancelClick: () => void;
 }): ReactElement {
-  const units = ["kg", "L", "unit"];
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
   const [pricePerUnit, setPricePerUnit] = useState<string>("0");
-  const [selectedUnit, setSelectedUnit] = useState(units[0]);
+  const [selectedUnit, setSelectedUnit] = useState<string>("");
   const [awaitingCreateDealCheck, setAwaitingCreateDealCheck] = useState(false);
   const { onCancelClick, onCreateDealClick } = props;
 
