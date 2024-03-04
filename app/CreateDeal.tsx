@@ -75,7 +75,7 @@ export function CreateDeal(props: {
               {units.map((unit, index) => {
                 return (
                   <FormCheckRadio
-                    key={index}
+                    key={unit}
                     onChange={(newUnit: string) => {
                       setSelectedUnit(newUnit);
                     }}
