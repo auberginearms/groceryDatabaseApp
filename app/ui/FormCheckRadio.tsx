@@ -16,6 +16,6 @@ export function FormCheckRadio(props: {
       onClick={() => {
         onChange(unit);
       }}
-    ></Form.Check>
+    />
   );
 }
