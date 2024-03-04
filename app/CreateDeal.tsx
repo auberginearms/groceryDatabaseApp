@@ -81,7 +81,7 @@ export function CreateDeal(props: {
                     }}
                     unit={unit}
                     value={selectedUnit}
-                  ></FormCheckRadio>
+                  />
                 );
               })}
             </FormGroup>
