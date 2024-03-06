@@ -1,10 +1,11 @@
 import { ReactElement } from "react";
 import { Form } from "react-bootstrap";
+import { Unit } from "../types";
 
 export function FormCheckRadio(props: {
-  onChange: (newUnit: string) => void;
-  unit: string;
-  value: string;
+  onChange: (newUnit: Unit) => void;
+  unit: Unit;
+  value: Unit|undefined;
 }): ReactElement {
   const { unit, value, onChange } = props;
   return (

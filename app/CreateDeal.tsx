@@ -10,14 +10,9 @@ import { FormControlString } from "./ui/FormControlString";
 import { InputGroup } from "react-bootstrap";
 import { FormControlNumber } from "./ui/FormControlNumber";
 import { FormCheckRadio } from "./ui/FormCheckRadio";
+import { Unit } from "./types";
 
-enum Units {
-  kg = "kg",
-  L = "L",
-  unit = "unit",
-}
-
-const units = [Units.kg, Units.L, Units.unit];
+const units:Unit[]=["kg","L","unit"]
 
 export function CreateDeal(props: {
   onCreateDealClick: () => void;
@@ -26,7 +21,7 @@ export function CreateDeal(props: {
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [itemName, setItemName] = useState<string>("");
   const [pricePerUnit, setPricePerUnit] = useState<string>("0");
-  const [selectedUnit, setSelectedUnit] = useState<string>("");
+  const [selectedUnit, setSelectedUnit] = useState<Unit|undefined>(undefined);
   const [awaitingCreateDealCheck, setAwaitingCreateDealCheck] = useState(false);
   const { onCancelClick, onCreateDealClick } = props;
 
@@ -72,11 +67,11 @@ export function CreateDeal(props: {
             </FormGroup>
             <FormGroup>
               <FormLabel>Unit</FormLabel>
-              {units.map((unit, index) => {
+              {units.map((unit:Unit) => {
                 return (
                   <FormCheckRadio
                     key={unit}
-                    onChange={(newUnit: string) => {
+                    onChange={(newUnit) => {
                       setSelectedUnit(newUnit);
                     }}
                     unit={unit}
